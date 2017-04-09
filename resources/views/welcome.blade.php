@@ -24,7 +24,7 @@
             <div class="grid align-center padding20">
                 <div class="row">
                     <div class="cell">
-                        <img src="{{ asset('storage/assets/kepo.png') }}" class="image-container" data-type='bordered'>
+                        <img src="{{ asset(Storage::url('assets/kepo.png')) }}" class="image-container" data-type='bordered'>
                         <h1 class="fg-white">Under Construction</h1>
                         <div class="countdown" data-role="countdown" data-stop="2017-04-30" data-label-color="fg-white"></div>
                     </div>
