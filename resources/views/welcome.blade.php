@@ -11,13 +11,13 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
-        <link href="../css/metro.css" rel="stylesheet">
-        <link href="../css/metro-icons.css" rel="stylesheet">
-        <link href="../css/metro-responsive.css" rel="stylesheet">
-        <link href="../css/metro-schemes.css" rel="stylesheet">
+        <link href="{{ asset('css/metro.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/metro-icons.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/metro-responsive.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/metro-schemes.css') }}" rel="stylesheet">
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="../js/metro.js"></script>
+        <script src="{{ asset('js/metro.js') }}"></script>
     </head>
     <body class="bg-gray">
         <div class="container page-content">
