@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//ROUTE UNTUK SITE PUBLIK
+Route::group(['namespace' => 'Site'], function () {
+
+  Route::get('/', 'HomeController@index'});
+
 });
