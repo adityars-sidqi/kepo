@@ -19,7 +19,11 @@ Route::group(['namespace' => 'Site'], function () {
 });
 
 //ROUTE UNTUK ADMIN
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+Route::group(['namespace' => 'Admin', 'middleware' => 'admin', 'prefix' => 'admin'], function () {
+
+  Route::get('/login', 'AdminController@login');
+  Route::post('/login', 'AdminController@autentikasi');
+  Route::get('/logout', 'AdminController@logout');
 
   Route::get('/', 'AdminController@index');
 
