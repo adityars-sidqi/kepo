@@ -17,3 +17,10 @@ Route::group(['namespace' => 'Site'], function () {
   Route::get('/', 'HomeController@index');
 
 });
+
+//ROUTE UNTUK ADMIN
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+
+  Route::get('/', 'AdminController@index');
+
+});
