@@ -46,27 +46,10 @@
                 flex-basis: calc(100% - 52px);
             }
         }
+
+        @yield('style_page')
     </style>
-
-    <script>
-        function pushMessage(t){
-            var mes = 'Info|Implement independently';
-            $.Notify({
-                caption: mes.split("|")[0],
-                content: mes.split("|")[1],
-                type: t
-            });
-        }
-
-        $(function(){
-            $('.sidebar').on('click', 'li', function(){
-                if (!$(this).hasClass('active')) {
-                    $('.sidebar li').removeClass('active');
-                    $(this).addClass('active');
-                }
-            })
-        })
-    </script>
+    @include('admin.layouts.flash_message')
 </head>
 <body class="bg-steel">
     @include('admin.layouts.header')
@@ -75,8 +58,13 @@
         <div class="flex-grid no-responsive-future" style="height: 100%;">
             <div class="row" style="height: 100%">
               @include('admin.layouts.sidebar')
-              @yield('content')
+              <div class="cell auto-size padding20 bg-white" id="cell-content">
+                <h1 class="text-light">@yield('title_page') <span class="mif-@yield('title_icon') place-right"></span></h1>
+                <hr class="thin bg-grayLighter">
+                    @yield('content')
+              </div>
             </div>
+
         </div>
     </div>
 </body>

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Admin\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Admin\Admin;
 
 class AdminController extends Controller
 {
@@ -18,15 +18,14 @@ class AdminController extends Controller
     }
 
     public function autentikasi(Request $request){
-        $admin = new Admin;
-        $admin->where('username', $request->admin_login)
+        $admin = Admin::where('username', $request->admin_login)
               ->where('password', md5($request->admin_password))
               ->first();
 
       if(!$admin){
         return redirect()->intended('admin/login');
       }
-      session(['admin' => 'admin']);
+      session(['admin' => 'admin', 'nama' => $admin->nama]);
 
       return redirect()->intended('admin/');
     }

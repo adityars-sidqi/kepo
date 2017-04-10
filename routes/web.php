@@ -24,7 +24,8 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'admin', 'prefix' => 'admi
   Route::get('/login', 'AdminController@login');
   Route::post('/login', 'AdminController@autentikasi');
   Route::get('/logout', 'AdminController@logout');
-
   Route::get('/', 'AdminController@index');
+
+  Route::resource('kategori','KategoriController');
 
 });
