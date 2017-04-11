@@ -15,10 +15,10 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-      if(session()->get('sessi') == 'publik'){
-          return abort(403);
-      }
+      if(session()->has('admin')){
         return $next($request);
+      }
+        return redirect('admin/login');;
 
     }
 }

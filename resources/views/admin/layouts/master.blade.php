@@ -50,6 +50,10 @@
         @yield('style_page')
     </style>
     @include('admin.layouts.flash_message')
+    <script type="text/javascript">
+      @yield('script_page')
+    </script>
+
 </head>
 <body class="bg-steel">
     @include('admin.layouts.header')

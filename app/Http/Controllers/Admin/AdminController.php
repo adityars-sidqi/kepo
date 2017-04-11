@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Admin\Admin;
+use App\Models\Admin\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -10,11 +10,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-      if (session()->has('admin')) {
-            return view('admin.dashboard');
-        } else {
-            return redirect()->intended('admin/login');
-        }
+        return view ('admin.dashboard');
     }
 
     public function autentikasi(Request $request){

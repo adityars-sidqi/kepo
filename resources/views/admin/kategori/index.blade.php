@@ -3,7 +3,25 @@
 @section('title','Kategori | Administrator KEPO.ID')
 @section('title_page', 'Kategori')
 @section('title_icon', 'list')
+@section('style_page')
+  #DataTables_Table_0_wrapper{
+    display:inline;
+  }
+@endsection
+@section('script_page')
+  $(document).ready(function() {
+    $('table').DataTable( {
+        "iDisplayLength": 5,
+        "bLengthChange": false,
 
+        "columns": [
+            null,
+            null,
+            { "width": "20%" }
+          ]
+    } );
+  } );
+@endsection
 @section('content')
 <a href="{{ url('admin/kategori/create') }}" class="button primary">CREATE</a>
 
@@ -34,18 +52,4 @@
       @endforeach
     </tbody>
   </table>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('table').DataTable( {
-          "iDisplayLength": 4,
-          "bLengthChange": false,
-
-          "columns": [
-              null,
-              null,
-              { "width": "20%" }
-            ]
-      } );
-    } );
-  </script>
 @endsection

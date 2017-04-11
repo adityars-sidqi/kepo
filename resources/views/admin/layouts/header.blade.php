@@ -2,8 +2,8 @@
       <a class="app-bar-element branding">KepoHub</a>
       <span class="app-bar-divider"></span>
       <ul class="app-bar-menu">
-          <li><a href="">Dashboard</a></li>
-          <li><a href="">Konfirmasi</a></li>
+          <li><a href="{{asset('admin/')}}">Dashboard</a></li>
+          <li><a href="{{ asset('admin/konfirmasi') }}">Konfirmasi</a></li>
       </ul>
 
       <div class="app-bar-element place-right">
@@ -11,7 +11,7 @@
           <div class="app-bar-drop-container padding10 place-right no-margin-top block-shadow fg-dark" data-role="dropdown" data-no-close="true" style="width: 220px">
               <h2 class="text-light">Quick settings</h2>
               <ul class="unstyled-list fg-dark">
-                  <li><a href="admin/logout" class="fg-white3 fg-hover-yellow">Exit</a></li>
+                  <li><a href="{{ url('/admin/logout')}}" class="fg-white3 fg-hover-yellow">Exit</a></li>
               </ul>
           </div>
       </div>

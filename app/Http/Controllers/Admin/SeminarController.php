@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Admin\Kategori;
+use App\Models\Admin\Seminar;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class KategoriController extends Controller
+class SeminarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        $kategoris = Kategori::all();
-        return view('admin.kategori.index', ['kategoris' => $kategoris]);
+      $seminars = Seminar::all();
+      return view('admin.seminar.index', ['seminars' => $seminars]);
     }
 
     /**
@@ -26,7 +26,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        return view('admin.kategori.create');
+        //
     }
 
     /**
@@ -37,16 +37,7 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-          'nama_kategori' => 'required'
-        ]);
-
-        $kategori = new Kategori;
-        $kategori->nama_kategori = $request->nama_kategori;
-        $kategori->timestamps = false;
-        $kategori->save();
-
-        return redirect(asset('admin/kategori/'))->with('success', 'Kategori created successfully!');
+        //
     }
 
     /**
@@ -68,13 +59,7 @@ class KategoriController extends Controller
      */
     public function edit($id)
     {
-        $kategori = Kategori::find($id);
-
-        if(!$kategori){
-          abort(404);
-        }
-
-        return view('admin.kategori.edit')->with('kategori', $kategori);
+        //
     }
 
     /**
@@ -86,16 +71,7 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $this->validate($request, [
-        'nama_kategori' => 'required'
-      ]);
-
-      $kategori = Kategori::find($id);
-      $kategori->nama_kategori = $request->nama_kategori;
-      $kategori->timestamps = false;
-      $kategori->save();
-
-      return redirect(asset('admin/kategori/'))->with('success_edit', 'Kategori edited successfully!');
+        //
     }
 
     /**
@@ -106,9 +82,6 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
-        $kategori = Kategori::find($id);
-        $kategori->delete();
-
-        return redirect(asset('admin/kategori/'))->with('delete','Kategori deleted successfully!');
+        //
     }
 }

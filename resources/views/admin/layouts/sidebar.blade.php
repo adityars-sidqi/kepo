@@ -4,34 +4,21 @@
               <span class="mif-home icon"></span>
               <span class="title">dashboard</span>
           </a></li>
-          <li {{ Request::is('admin/kategori') ? 'class=active' : ''}}><a href="{{ asset('admin/kategori') }}">
+          <li {{ Request::is('admin/kategori') || Request::is('admin/kategori/*')? 'class=active' : ''}}><a href="{{ asset('admin/kategori') }}">
               <span class="mif-list icon"></span>
               <span class="title">kategori</span>
           </a></li>
-          <li><a href="#">
-              <span class="mif-drive-eta icon"></span>
-              <span class="title">Virtual machines</span>
-              <span class="counter">0</span>
-          </a></li>
-          <li><a href="#">
-              <span class="mif-cloud icon"></span>
-              <span class="title">Cloud services</span>
-              <span class="counter">0</span>
-          </a></li>
-          <li><a href="#">
+          <li {{ Request::is('admin/seminar') || Request::is('admin/seminar/*')? 'class=active' : ''}}><a href="{{ asset('admin/seminar') }}">
               <span class="mif-database icon"></span>
-              <span class="title">SQL Databases</span>
-              <span class="counter">0</span>
+              <span class="title">seminar</span>
           </a></li>
-          <li><a href="#">
-              <span class="mif-cogs icon"></span>
-              <span class="title">Automation</span>
-              <span class="counter">0</span>
+          <li {{ Request::is('admin/user') || Request::is('admin/user/*')? 'class=active' : ''}}><a href="{{ asset('admin/user') }}">
+              <span class="mif-users icon"></span>
+              <span class="title">user</span>
           </a></li>
-          <li><a href="#">
-              <span class="mif-apps icon"></span>
-              <span class="title">all items</span>
-              <span class="counter">0</span>
+          <li {{ Request::is('admin/organisasi') || Request::is('admin/organisasi/*')? 'class=active' : ''}}><a href="{{ asset('admin/organisasi') }}">
+              <span class="mif-organization icon"></span>
+              <span class="title">organisasi</span>
           </a></li>
       </ul>
   </div>
