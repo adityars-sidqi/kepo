@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Admin;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,6 +10,6 @@ class Kategori extends Model
 
     public function seminar()
     {
-      return $this->hasMany('App\Models\Admin\Seminar', 'id_kategori');
+      return $this->hasMany('App\Models\Seminar', 'id_kategori');
     }
 }

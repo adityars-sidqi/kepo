@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Admin\Organisasi;
+use App\Models\Organisasi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 

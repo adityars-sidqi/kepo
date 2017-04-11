@@ -43,6 +43,6 @@
     <br>
     <br>
       {{ csrf_field() }}
-    <input class="button success" type="submit" value="Edit">
+    <input class="button success" type="submit" value="Create">
   </form>
 @endsection

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Admin;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,11 +10,11 @@ class Seminar extends Model
 
     public function kategori()
     {
-      return $this->belongsTo('App\Models\Admin\Kategori' , 'id_kategori');
+      return $this->belongsTo('App\Models\Kategori' , 'id_kategori');
     }
 
     public function organisasi()
     {
-      return $this->belongsTo('App\Models\Admin\Organisasi' , 'id_organisasi');
+      return $this->belongsTo('App\Models\Organisasi' , 'id_organisasi');
     }
 }

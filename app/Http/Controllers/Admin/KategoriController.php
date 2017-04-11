@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Admin\Kategori;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
