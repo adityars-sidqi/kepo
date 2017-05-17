@@ -9,6 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $a =1;
         return view('home');
     }
 }
