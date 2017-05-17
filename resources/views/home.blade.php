@@ -1,47 +1,179 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Latihan Bootstrap</title>
-    
-    <!-- Bootstrap -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+@extends('layouts.app')
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <nav class="navbar navbar-inverse">
-      <div class="navbar-header">
-        <button type="button"class="navbar-toggle" data-toggle="collapse" data-target="#target-list">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a href="#" class="navbar-brand">KepoHub</a>
-      </div>
-      <div class="collapse navbar-collapse" id="target-list">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">Kelas</a></li>
-          <li><a href="#">Forum</a></li>
-        </ul>
-      </div>
-    </nav>
-    <div class="container">
-      <h1>Hello, world!</h1>
-    </div>
+@section('content')
+  <div class="container">
+        <div class="row">
+          <div class="col-md-9 col-sm-12 col-xs-12" id="slider">
+            <div class="carousel slide" data-ride="carousel" data-interval="2000" data-pause="hover">
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-  </body>
-</html>
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                  <img src="{{asset('images/1.jpg')}}" class="img-responsive" alt="...">
+                  <div class="carousel-caption">
+                   ...
+                  </div>
+                </div>
+                <div class="item">
+                  <img src="{{asset('images/2.jpg') }}"  class="img-responsive" alt="...">
+                  <div class="carousel-caption">
+                   ...
+                  </div>
+                </div>
+                <div class="item">
+                  <img src="{{asset('images/3.jpg') }}" class="img-responsive" alt="...">
+                  <div class="carousel-caption">
+                   ...
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-md-3" id="eventTerbaru">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#newevent" aria-controls="home" role="tab" data-toggle="tab" class="tabaktiv">New Event</a>
+              </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane row fade hidden-xs active in" id="newevent">
+                <div class="col-md-12">
+                  <ul id="tabnew" class="list-unstyled" style="padding-top:15px;">
+                    <li><a href="#">Seminar Terbaru</a></li>
+                    <li><a href="#">Seminar Terbaru</a></li>
+                    <li><a href="#">Seminar Terbaru</a></li>
+                    <li><a href="#">Seminar Terbaru</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12 col-xs-12" id="divdaterange">
+          <div class='input-group' id="inputdaterange">
+            <span class="input-group-addon" >
+              <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+            <input type='text' name="daterange" />
+          </div>
+        </div>
+      </div>
+
+      <div class="main">
+        <div class="container">
+          <div class="row margin-bottom-10">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <a href="#" class="gambarseminar">
+                <img class="img-responsive img-thumbnail" src="{{asset('images/1.jpg')}}" alt="Generic placeholder image">
+              </a>
+              <h5>
+                <a href="#" class="judul">Dukungan Intelligent System Dalam Perencanaan Ruang Kota DKI Jakarta</a>
+              </h5>
+              <h6>Organized by : BEM FIKTI Universitas Gunadarma</h6>
+              <h6>27 Mei 2017</h6>
+              <div class="tempat">
+                <i class="fa fa-map-marker"></i> Amfiteater Terbuka Jiwa Jawa Resort, Sukapura , Probolinggo, Jawa Timur
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <a href="#" class="gambarseminar">
+                <img class="img-responsive img-thumbnail" src="{{asset('images/1.jpg')}}" alt="Generic placeholder image">
+              </a>
+              <h5>
+                <a href="#" class="judul">Dukungan Intelligent System Dalam Perencanaan Ruang Kota DKI Jakarta</a>
+              </h5>
+              <h6>Organized by : BEM FIKTI Universitas Gunadarma</h6>
+              <h6>27 Mei 2017</h6>
+              <div class="tempat">
+                <i class="fa fa-map-marker"></i> Amfiteater Terbuka Jiwa Jawa Resort, Sukapura , Probolinggo, Jawa Timur
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <a href="#" class="gambarseminar">
+                <img class="img-responsive img-thumbnail" src="{{asset('images/1.jpg')}}" alt="Generic placeholder image">
+              </a>
+              <h5>
+                <a href="#" class="judul">Dukungan Intelligent System Dalam Perencanaan Ruang Kota DKI Jakarta</a>
+              </h5>
+              <h6>Organized by : BEM FIKTI Universitas Gunadarma</h6>
+              <h6>27 Mei 2017</h6>
+              <div class="tempat">
+                <i class="fa fa-map-marker"></i> Amfiteater Terbuka Jiwa Jawa Resort, Sukapura , Probolinggo, Jawa Timur
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <a href="#" class="gambarseminar">
+                <img class="img-responsive img-thumbnail" src="{{asset('images/1.jpg')}}" alt="Generic placeholder image">
+              </a>
+              <h5>
+                <a href="#" class="judul">Dukungan Intelligent System Dalam Perencanaan Ruang Kota DKI Jakarta</a>
+              </h5>
+              <h6>Organized by : BEM FIKTI Universitas Gunadarma</h6>
+              <h6>27 Mei 2017</h6>
+              <div class="tempat">
+                <i class="fa fa-map-marker"></i> Amfiteater Terbuka Jiwa Jawa Resort, Sukapura , Probolinggo, Jawa Timur
+              </div>
+            </div>
+          </div>
+          <div class="row margin-bottom-10">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <a href="#" class="gambarseminar">
+                <img class="img-responsive img-thumbnail" src="{{asset('images/1.jpg')}}" alt="Generic placeholder image">
+              </a>
+              <h5>
+                <a href="#" class="judul">Dukungan Intelligent System Dalam Perencanaan Ruang Kota DKI Jakarta</a>
+              </h5>
+              <h6>Organized by : BEM FIKTI Universitas Gunadarma</h6>
+              <h6>27 Mei 2017</h6>
+              <div class="tempat">
+                <i class="fa fa-map-marker"></i> Amfiteater Terbuka Jiwa Jawa Resort, Sukapura , Probolinggo, Jawa Timur
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <a href="#" class="gambarseminar">
+                <img class="img-responsive img-thumbnail" src="{{asset('images/1.jpg')}}" alt="Generic placeholder image">
+              </a>
+              <h5>
+                <a href="#" class="judul">Dukungan Intelligent System Dalam Perencanaan Ruang Kota DKI Jakarta</a>
+              </h5>
+              <h6>Organized by : BEM FIKTI Universitas Gunadarma</h6>
+              <h6>27 Mei 2017</h6>
+              <div class="tempat">
+                <i class="fa fa-map-marker"></i> Amfiteater Terbuka Jiwa Jawa Resort, Sukapura , Probolinggo, Jawa Timur
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <a href="#" class="gambarseminar">
+                <img class="img-responsive img-thumbnail" src="{{asset('images/1.jpg')}}" alt="Generic placeholder image">
+              </a>
+              <h5>
+                <a href="#" class="judul">Dukungan Intelligent System Dalam Perencanaan Ruang Kota DKI Jakarta</a>
+              </h5>
+              <h6>Organized by : BEM FIKTI Universitas Gunadarma</h6>
+              <h6>27 Mei 2017</h6>
+              <div class="tempat">
+                <i class="fa fa-map-marker"></i> Amfiteater Terbuka Jiwa Jawa Resort, Sukapura , Probolinggo, Jawa Timur
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <a href="#" class="gambarseminar">
+                <img class="img-responsive img-thumbnail" src="{{asset('images/1.jpg')}}" alt="Generic placeholder image">
+              </a>
+              <h5>
+                <a href="#" class="judul">Dukungan Intelligent System Dalam Perencanaan Ruang Kota DKI Jakarta</a>
+              </h5>
+              <h6>Organized by : BEM FIKTI Universitas Gunadarma</h6>
+              <h6>27 Mei 2017</h6>
+              <div class="tempat">
+                <i class="fa fa-map-marker"></i> Amfiteater Terbuka Jiwa Jawa Resort, Sukapura , Probolinggo, Jawa Timur
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+@endsection
