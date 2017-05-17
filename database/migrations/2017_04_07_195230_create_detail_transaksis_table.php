@@ -15,7 +15,7 @@ class CreateDetailTransaksisTable extends Migration
     {
         Schema::create('detail_transaksis', function (Blueprint $table) {
             $table->integer('id_transaksi')->unsigned();
-            $table->integer('jumlah');
+            $table->integer('jumlah_tiket');
             $table->integer('total');
             $table->integer('id_seminar')->unsigned();
             $table->foreign('id_transaksi')->references('id_transaksi')->on('transaksis')->onDelete('cascade');

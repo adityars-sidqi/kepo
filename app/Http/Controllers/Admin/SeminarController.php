@@ -43,26 +43,26 @@ class SeminarController extends Controller
     public function store(Request $request)
     {
       $this->validate($request, [
-        'nama_seminar' => 'required',
+        'judul' => 'required',
         'tgl_seminar' => 'required|date',
         'tempat' => 'required',
         'deskripsi' => 'required',
-        'jumlah_tiket' => 'required|numeric|min:1',
+        'tiket_tersedia' => 'required|numeric|min:1',
         'harga' => 'required|numeric|min:1',
         'gambar' => 'required|mimes:jpeg,jpg,png|max:2000',
         'id_kategori' => 'required',
         'id_organisasi' => 'required'
       ]);
       //upload file
-      $filename = str_slug($request->nama_seminar, '-') . '-' . time() .  '.png';
+      $filename = str_slug($request->judul, '-') . '-' . time() .  '.png';
       $request->file('gambar')->storeAs('public/seminar',$filename);
 
       $seminar = new Seminar;
-      $seminar->nama_seminar = $request->nama_seminar;
+      $seminar->judul = $request->judul;
       $seminar->tgl_seminar = $request->tgl_seminar;
       $seminar->tempat = $request->tempat;
       $seminar->deskripsi = $request->deskripsi;
-      $seminar->jumlah_tiket = $request->jumlah_tiket;
+      $seminar->tiket_tersedia = $request->tiket_tersedia;
       $seminar->harga = $request->harga;
       $seminar->gambar = $filename;
       $seminar->id_kategori = $request->id_kategori;
@@ -114,11 +114,11 @@ class SeminarController extends Controller
     public function update(Request $request, $id)
     {
       $this->validate($request, [
-        'nama_seminar' => 'required',
+        'judul' => 'required',
         'tgl_seminar' => 'required|date',
         'tempat' => 'required',
         'deskripsi' => 'required',
-        'jumlah_tiket' => 'required|numeric|min:1',
+        'tiket_tersedia' => 'required|numeric|min:1',
         'harga' => 'required|numeric|min:1',
         'gambar' => 'nullable|mimes:jpg,jpeg,png|max:2000',
         'id_kategori' => 'required',
@@ -126,16 +126,16 @@ class SeminarController extends Controller
       ]);
 
       $seminar = Seminar::find($id);
-      $seminar->nama_seminar = $request->nama_seminar;
+      $seminar->judul = $request->judul;
       $seminar->tgl_seminar = $request->tgl_seminar;
       $seminar->tempat = $request->tempat;
       $seminar->deskripsi = $request->deskripsi;
-      $seminar->jumlah_tiket = $request->jumlah_tiket;
+      $seminar->tiket_tersedia = $request->tiket_tersedia;
       $seminar->harga = $request->harga;
       if(!is_null($request->gambar)){
       //upload file
       File::delete('storage/seminar/'. $seminar->gambar);
-      $filename = str_slug($request->nama_seminar, '-') . time() .  '.png';
+      $filename = str_slug($request->judul, '-') . time() .  '.png';
       $request->file('gambar')->storeAs('public/seminar',$filename);
       $seminar->gambar = $filename;
       }
@@ -144,7 +144,7 @@ class SeminarController extends Controller
       $seminar->timestamps = false;
       $seminar->save();
 
-      return redirect(asset('admin/seminar/'))->with('success_edit', 'Seminar edited successfully!');
+      return redirect(asset('admin/seminar/'))->with('success', 'Seminar edited successfully!');
     }
 
     /**
@@ -159,6 +159,6 @@ class SeminarController extends Controller
       File::delete('storage/seminar/'. $seminar->gambar);
       $seminar->delete();
 
-      return redirect(asset('admin/seminar/'))->with('delete','Seminar deleted successfully!');
+      return redirect(asset('admin/seminar/'))->with('error','Seminar deleted successfully!');
     }
 }

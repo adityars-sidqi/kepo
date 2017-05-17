@@ -6,6 +6,7 @@ use App\Models\Organisasi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+
 class OrganisasiController extends Controller
 {
     /**
@@ -51,6 +52,9 @@ class OrganisasiController extends Controller
       $organisasi->alamat = $request->alamat;
       $organisasi->email = $request->email;
       $organisasi->password = encrypt($request->password);
+      $kode_aktivasi = time() . "-" . $request->email;
+      $organisasi->kode_aktivasi = encrypt($kode_aktivasi);
+      $organisasi->status = "Nonaktif";
       $organisasi->timestamps = false;
 
       $organisasi->save();
@@ -97,7 +101,7 @@ class OrganisasiController extends Controller
     {
       $this->validate($request, [
         'nama' => 'required',
-        'telp' => 'required|numeric|max:12',
+        'telp' => 'required|numeric',
         'alamat' => 'required',
         'email' => 'required',
         'password' => 'required|min:6'
@@ -114,7 +118,7 @@ class OrganisasiController extends Controller
 
       $organisasi->save();
 
-      return redirect(asset('admin/organisasi/'))->with('success_edit', 'Organisasi edited successfully!');
+      return redirect(asset('admin/organisasi/'))->with('success', 'Organisasi edited successfully!');
     }
 
     /**
@@ -128,6 +132,6 @@ class OrganisasiController extends Controller
       $organisasi = Organisasi::find($id);
       $organisasi->delete();
 
-      return redirect(asset('admin/organisasi/'))->with('delete','Organisasi deleted successfully!');
+      return redirect(asset('admin/organisasi/'))->with('error','Organisasi deleted successfully!');
     }
 }

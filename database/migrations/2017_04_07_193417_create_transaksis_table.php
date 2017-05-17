@@ -15,10 +15,10 @@ class CreateTransaksisTable extends Migration
     {
         Schema::create('transaksis', function (Blueprint $table) {
             $table->increments('id_transaksi');
-            $table->integer('id_user')->unsigned();
+            $table->integer('id_peserta')->unsigned();
             $table->date('tgl_transaksi');
-            $table->integer('total');
-            $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade');
+            $table->integer('grand_total');
+            $table->foreign('id_peserta')->references('id_peserta')->on('pesertas')->onDelete('cascade');
         });
     }
 

@@ -2,97 +2,105 @@
 
 @section('title','Create Seminar | Administrator KEPO.ID')
 @section('title_page', 'Create Seminar')
-@section('title_icon', 'database')
 
 @section('content')
-  <br>
-  <form class="" action="{{asset('admin/seminar')}}" method="post" enctype="multipart/form-data">
-    <div class="flex-grid">
-      <div class="row cells2">
-        <div class="cell colspan6">
-          <div class="input-control text {{ $errors->has('nama_seminar') ? 'error' : ''}}" data-role="input" >
-              <label for="nama_seminar">Nama Seminar:</label>
-              <input type="text" name="nama_seminar" id="nama_seminar">
-          </div>
-            {{ $errors->has('nama_seminar') ? $errors->first('nama_seminar') : ''}}
-          <br>
-          <br>
-          <div class="input-control text {{ $errors->has('tgl_seminar') ? 'error' : ''}}" data-role="input" >
-              <label for="tgl_seminar">Tanggal Seminar:</label>
-              <input type="date" name="tgl_seminar" id="tgl_seminar">
-          </div>
-            {{ $errors->has('tgl_seminar') ? $errors->first('tgl_seminar') : ''}}
-          <br>
-          <br>
-          <div class="input-control text {{ $errors->has('tempat') ? 'error' : ''}}" data-role="input" >
-              <label for="tempat">Tempat:</label>
-              <input type="text" name="tempat" id="tempat">
-          </div>
-            {{ $errors->has('tempat') ? $errors->first('tempat') : ''}}
-          <br>
-          <br>
-          <div class="input-control textarea {{ $errors->has('deskripsi') ? 'error' : ''}}" data-role="input" data-text-auto-resize="true" data-text-max-height="175">
-              <label for="deskripsi">Deskripsi:</label>
-              <textarea name="deskripsi"></textarea>
-          </div>
-            {{ $errors->has('deskripsi') ? $errors->first('deskripsi') : ''}}
-          <br>
-          <br>
+  <form class="form-horizontal" action="{{asset('admin/seminar')}}" method="post" enctype="multipart/form-data">
+    <div class="form-group {{ $errors->has('judul') ? 'has-error' : ''}}">
+        <label for="judul" class="col-sm-2 col-xs-3 control-label">Judul</label>
+        <div class="col-xs-8 col-md-4">
+            <input type="text" name="judul" class="form-control" id="judul" aria-describedby="helpBlockJudul" placeholder="Judul">
+            <span id="helpBlockJudul" class="help-block">
+              {{ $errors->has('judul') ? $errors->first('judul') : ''}}
+            </span>
         </div>
-        <div class="cell colspan6">
-          <div class="input-control text {{ $errors->has('jumlah_tiket') ? 'error' : ''}}" data-role="input" >
-              <label for="jumlah_tiket">Jumlah Tiket:</label>
-              <input type="text" name="jumlah_tiket" id="jumlah_tiket">
-          </div>
-            {{ $errors->has('jumlah_tiket') ? $errors->first('jumlah_tiket') : ''}}
-          <br>
-          <br>
-          <div class="input-control text {{ $errors->has('harga') ? 'error' : ''}}" data-role="input" >
-              <label for="harga">Harga:</label>
-              <input type="text" name="harga" id="harga">
-          </div>
-            {{ $errors->has('harga') ? $errors->first('harga') : ''}}
-          <br>
-          <br>
-          <div class="input-control file {{ $errors->has('gambar') ? 'error' : ''}}" data-role="input" >
-              <label for="gambar">Gambar:</label>
-              <input type="file" name="gambar" id="gambar"><button class="button"><span class="mif-folder"></span></button>
-          </div>
-            {{ $errors->has('gambar') ? $errors->first('gambar') : ''}}
-          <br>
-          <br>
-          <div class="input-control select {{ $errors->has('id_kategori') ? 'error' : ''}}" data-role="input" >
-              <label for="id_kategori">Kategori:</label>
-              <select name="id_kategori">
-                    <option value="" selected="true" >Kategori</option>
-                  @foreach ($kategoris as $kategori)
-                    <option value="{{ $kategori->id_kategori }}">{{ $kategori->nama_kategori }}</option>
-                  @endforeach
-              </select>
-          </div>
-            {{ $errors->has('id_kategori') ? $errors->first('id_kategori') : ''}}
-          <br>
-          <br>
-          <div class="input-control select {{ $errors->has('id_organisasi') ? 'error' : ''}}" data-role="input" >
-              <label for="id_organisasi">Organisasi:</label>
-              <select name="id_organisasi">
-                    <option value="" selected="true" >Organisasi</option>
-                  @foreach ($organisasis as $organisasi)
-                    <option value="{{ $organisasi->id_organisasi }}">{{ $organisasi->nama }}</option>
-                  @endforeach
-              </select>
-          </div>
-            {{ $errors->has('id_organisasi') ? $errors->first('id_organisasi') : ''}}
-          <br>
-          <br>
+    </div>
+    <div class="form-group {{ $errors->has('tgl_seminar') ? 'has-error' : ''}}">
+        <label for="tgl_seminar" class="col-sm-2 col-xs-3 control-label">Tanggal Seminar</label>
+        <div class="col-xs-8 col-md-4">
+            <input type="date" name="tgl_seminar" class="form-control" id="tgl_seminar" aria-describedby="helpBlockTgl_seminar" placeholder="Tanggal Seminar">
+            <span id="helpBlockTgl_seminar" class="help-block">
+              {{ $errors->has('tgl_seminar') ? $errors->first('tgl_seminar') : ''}}
+            </span>
         </div>
-      </div>
-      <div class="row">
-        <div class="cell">
+    </div>
+    <div class="form-group {{ $errors->has('tempat') ? 'has-error' : ''}}">
+        <label for="tempat" class="col-sm-2 col-xs-3 control-label">Tempat</label>
+        <div class="col-xs-8 col-md-4">
+            <input type="text" name="tempat" class="form-control" id="tempat" aria-describedby="helpBlockTempat" placeholder="Tempat">
+            <span id="helpBlockTempat" class="help-block">
+              {{ $errors->has('tempat') ? $errors->first('tempat') : ''}}
+            </span>
+        </div>
+    </div>
+    <div class="form-group {{ $errors->has('deskripsi') ? 'has-error' : ''}}">
+        <label for="deskripsi" class="col-sm-2 col-xs-3 control-label">Deskripsi</label>
+        <div class="col-xs-8 col-md-4">
+            <textarea name="deskripsi" class="form-control" rows="10" id="deskripsi" aria-describedby="helpBlockDeskripsi" placeholder="Deskripsi"></textarea>
+            <span id="helpBlockDeskripsi" class="help-block">
+              {{ $errors->has('deskripsi') ? $errors->first('deskripsi') : ''}}
+            </span>
+        </div>
+    </div>
+    <div class="form-group {{ $errors->has('tiket_tersedia') ? 'has-error' : ''}}">
+        <label for="tiket_tersedia" class="col-sm-2 col-xs-3 control-label">Tiket Tersedia</label>
+        <div class="col-xs-8 col-md-4">
+            <input type="number" name="tiket_tersedia" class="form-control" id="tiket_tersedia" aria-describedby="helpBlockTiket_tersedia" placeholder="Tiket Tersedia">
+            <span id="helpBlockTiket_tersedia" class="help-block">
+              {{ $errors->has('tiket_tersedia') ? $errors->first('tiket_tersedia') : ''}}
+            </span>
+        </div>
+    </div>
+    <div class="form-group {{ $errors->has('harga') ? 'has-error' : ''}}">
+        <label for="harga" class="col-sm-2 col-xs-3 control-label">Harga</label>
+        <div class="col-xs-8 col-md-4">
+            <input type="number" name="harga" class="form-control" id="harga" aria-describedby="helpBlockHarga" placeholder="Harga">
+            <span id="helpBlockHarga" class="help-block">
+              {{ $errors->has('harga') ? $errors->first('harga') : ''}}
+            </span>
+        </div>
+    </div>
+    <div class="form-group {{ $errors->has('gambar') ? 'has-error' : ''}}">
+        <label for="harga" class="col-sm-2 col-xs-3 control-label">Gambar</label>
+        <div class="col-xs-8 col-md-4">
+            <input type="file" name="gambar" aria-describedby="helpBlockGambar" id="gambar">
+            <span id="helpBlockGambar" class="help-block">
+              {{ $errors->has('gambar') ? $errors->first('gambar') : ''}}
+            </span>
+        </div>
+    </div>
+    <div class="form-group {{ $errors->has('id_kategori') ? 'has-error' : ''}}">
+        <label for="id_kategori" class="col-sm-2 col-xs-3 control-label">Kategori</label>
+        <div class="col-xs-8 col-md-4">
+            <select class="form-control" name="id_kategori" id="id_kategori" aria-describedby="helpBlockKategori" placeholder="Kategori">
+                <option value="" selected="true" >Kategori</option>
+                @foreach ($kategoris as $kategori)
+                  <option value="{{ $kategori->id_kategori }}">{{ $kategori->nama_kategori }}</option>
+                @endforeach
+            </select>
+            <span id="helpBlockKategori" class="help-block" >
+              {{ $errors->has('id_kategori') ? $errors->first('id_kategori') : ''}}
+            </span>
+        </div>
+    </div>
+    <div class="form-group {{ $errors->has('id_organisasi') ? 'has-error' : ''}}">
+        <label for="id_organisasi" class="col-sm-2 col-xs-3 control-label">Organisasi</label>
+        <div class="col-xs-8 col-md-4">
+            <select class="form-control" name="id_organisasi" id="id_organisasi" aria-describedby="helpBlockOrganisasi" placeholder="Organisasi">
+                <option value="" selected="true" >Organisasi</option>
+                @foreach ($organisasis as $organisasi)
+                  <option value="{{ $organisasi->id_organisasi }}">{{ $organisasi->nama }}</option>
+                @endforeach
+            </select>
+            <span id="helpBlockOrganisasi" class="help-block" >
+              {{ $errors->has('id_organisasi') ? $errors->first('id_organisasi') : ''}}
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
           {{ csrf_field() }}
-          <input class="button success" type="submit" value="Create">
+          <button type="submit" class="btn btn-primary">Create</button>
         </div>
-      </div>
     </div>
   </form>
 @endsection

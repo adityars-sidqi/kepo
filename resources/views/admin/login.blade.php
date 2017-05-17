@@ -12,34 +12,14 @@
 
     <title>Administration | KEPO.ID</title>
 
-    <link href="{{ asset('css/metro.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/metro-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/metro-responsive.css') }}" rel="stylesheet">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="{{ asset('js/metro.js') }}"></script>
-
-    <style>
-        .login-form {
-            width: 25rem;
-            height: 18.75rem;
-            position: fixed;
-            top: 50%;
-            margin-top: -9.375rem;
-            left: 50%;
-            margin-left: -12.5rem;
-            background-color: #ffffff;
-            opacity: 0;
-            -webkit-transform: scale(.8);
-            transform: scale(.8);
-        }
-        .logo {
-          margin-left: auto;
-          margin-right: auto;
-          display: block;
-          width: 100px;
-        }
-    </style>
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/signin.css') }}" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
     <script>
 
@@ -60,7 +40,7 @@
 
 
         $(function(){
-            var form = $(".login-form");
+            var form = $(".form-signin");
 
             form.css({
                 opacity: 1,
@@ -72,33 +52,24 @@
         });
     </script>
 </head>
-<body class="bg-darkTeal">
-    <div class="login-form padding20 block-shadow">
-        <form action="login" method="post">
-            <img src="{{ asset('storage/assets/kepo.png') }}" class="image-container logo" data-type='bordered'>
-            <h1 class="text-light">Login to service</h1>
-            <hr class="thin"/>
-            <br />
-            <div class="input-control text full-size" data-role="input">
-                <label for="admin_login">Admin email:</label>
-                <input type="text" name="admin_login" id="user_login">
-                <button class="button helper-button clear"><span class="mif-cross"></span></button>
-            </div>
-            <br />
-            <br />
-            <div class="input-control password full-size" data-role="input">
-                <label for="admin_password">Admin password:</label>
-                <input type="password" name="admin_password" id="user_password">
-                <button class="button helper-button reveal"><span class="mif-looks"></span></button>
-            </div>
-            <br />
-            <br />
-            <div class="form-actions">
-                <button type="submit" class="button primary">Login to...</button>
-                <button type="button" class="button link">Cancel</button>
-            </div>
-            {{ csrf_field() }}
-        </form>
-    </div>
+<body>
+    <div class="container">
+      <form class="form-signin" action="login" method="post">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="text" id="admin_login" class="form-control" placeholder="Email address" name="admin_login" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="admin_password" class="form-control" placeholder="Password" name="admin_password" required>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        {{ csrf_field() }}
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+    </div> <!-- /container -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 </body>
 </html>

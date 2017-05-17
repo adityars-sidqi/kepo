@@ -13,24 +13,23 @@
 
 //ROUTE UNTUK SITE PUBLIK
 Route::group(['namespace' => 'Site'], function () {
-
-  Route::get('/', 'HomeController@index');
-
+    Route::get('/', 'HomeController@index');
 });
 
 //ROUTE UNTUK ADMIN
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
-  Route::get('/login', 'AdminController@login');
-  Route::post('/login', 'AdminController@autentikasi');
+    Route::get('/login', 'AdminController@login');
+    Route::post('/login', 'AdminController@autentikasi');
 });
 
 Route::group(['namespace' => 'Admin', 'middleware' => 'admin', 'prefix' => 'admin'], function () {
+    Route::get('/logout', 'AdminController@logout');
+    Route::get('/', 'AdminController@index');
 
-  Route::get('/logout', 'AdminController@logout');
-  Route::get('/', 'AdminController@index');
+    Route::resource('kategori', 'KategoriController');
+    Route::resource('seminar', 'SeminarController');
+    Route::resource('peserta', 'PesertaController');
+    Route::resource('organisasi', 'OrganisasiController');
 
-  Route::resource('kategori','KategoriController');
-  Route::resource('seminar','SeminarController');
-  Route::resource('user','UserController');
-  Route::resource('organisasi','OrganisasiController');
+    Route::get('/konfirmasi', 'KonfirmasiController@index');
 });

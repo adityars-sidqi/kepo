@@ -95,7 +95,7 @@ class KategoriController extends Controller
       $kategori->timestamps = false;
       $kategori->save();
 
-      return redirect(asset('admin/kategori/'))->with('success_edit', 'Kategori edited successfully!');
+      return redirect(asset('admin/kategori/'))->with('success', 'Kategori edited successfully!');
     }
 
     /**
@@ -109,6 +109,6 @@ class KategoriController extends Controller
         $kategori = Kategori::find($id);
         $kategori->delete();
 
-        return redirect(asset('admin/kategori/'))->with('delete','Kategori deleted successfully!');
+        return redirect(asset('admin/kategori/'))->with('error','Kategori deleted successfully!');
     }
 }

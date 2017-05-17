@@ -15,13 +15,13 @@ class CreateSeminarsTable extends Migration
     {
         Schema::create('seminars', function (Blueprint $table) {
             $table->increments('id_seminar');
-            $table->string('nama_seminar');
+            $table->string('judul', 150);
             $table->date('tgl_seminar');
-            $table->string('tempat');
+            $table->string('tempat', 100);
             $table->text('deskripsi');
-            $table->integer('jumlah_tiket');
+            $table->integer('tiket_tersedia');
             $table->integer('harga');
-            $table->string('gambar', 255);
+            $table->string('gambar');
             $table->integer('id_kategori')->unsigned();
             $table->integer('id_organisasi')->unsigned();
             $table->foreign('id_kategori')->references('id_kategori')->on('kategoris')->onDelete('cascade');

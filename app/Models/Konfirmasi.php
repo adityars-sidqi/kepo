@@ -13,8 +13,8 @@ class Konfirmasi extends Model
       return $this->belongsTo('App\Models\Admin' , 'id_admin');
     }
 
-    public function user()
+    public function peserta()
     {
-      return $this->belongsTo('App\Models\User' , 'id_user');
+      return $this->belongsTo('App\Models\Peserta' , 'id_peserta');
     }
 }

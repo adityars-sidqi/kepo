@@ -15,12 +15,14 @@ class CreateOrganisasisTable extends Migration
     {
         Schema::create('organisasis', function (Blueprint $table) {
             $table->increments('id_organisasi');
-            $table->string('nama');
+            $table->string('nama', 100);
             $table->string('telp', 12);
             $table->text('alamat');
             $table->string('email', 100);
             $table->string('password');
             $table->unique('email');
+            $table->string('kode_aktivasi');
+            $table->enum('status', ['Aktif', 'Nonaktif']);
         });
     }
 

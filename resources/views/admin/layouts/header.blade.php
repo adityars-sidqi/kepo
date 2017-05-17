@@ -1,4 +1,4 @@
-  <div class="app-bar fixed-top darcula" data-role="appbar">
+  {{-- <div class="app-bar fixed-top darcula" data-role="appbar">
       <a class="app-bar-element branding">KepoHub</a>
       <span class="app-bar-divider"></span>
       <ul class="app-bar-menu">
@@ -15,4 +15,33 @@
               </ul>
           </div>
       </div>
-  </div>
+  </div> --}}
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">KepoHub</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="{{asset('admin')}}">Dashboard</a></li>
+          <li><a href="{{asset('admin/konfirmasi')}}">Konfirmasi</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown" >
+          <a href="#" class="dropdown-toggle" id="account" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
+          <ul  id="account-data" class="dropdown-menu">
+            <li><a href="#">{{ session('nama') }}</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="{{ asset('admin/logout')}}">Logout</a></li>
+          </ul>
+        </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
