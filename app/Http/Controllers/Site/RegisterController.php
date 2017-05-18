@@ -47,7 +47,7 @@ class RegisterController extends Controller
         $peserta->save();
 
         //send email
-        Mail::to('test@emailuser.com')->send(new PesertaCreated($peserta));
+        Mail::to($peserta->email)->send(new PesertaCreated($peserta));
 
         return view('suksesregister')->with('email', $peserta->email);
     }
@@ -82,7 +82,7 @@ class RegisterController extends Controller
         $organisasi->save();
 
         //send email
-        Mail::to('test@emailuser.com')->send(new OrganisasiCreated($organisasi));
+        Mail::to($organisasi->email)->send(new OrganisasiCreated($organisasi));
 
         return view('suksesregister')->with('email', $organisasi->email);
     }
