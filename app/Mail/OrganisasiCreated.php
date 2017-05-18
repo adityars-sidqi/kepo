@@ -29,6 +29,6 @@ class OrganisasiCreated extends Mailable
      */
     public function build()
     {
-        return $this->from('no-reply')->subject('Verify your email address')->view('email.organisasicreated');
+        return $this->subject('Verify your email address')->view('email.organisasicreated');
     }
 }
