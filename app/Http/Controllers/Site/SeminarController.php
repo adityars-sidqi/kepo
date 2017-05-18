@@ -5,11 +5,15 @@ namespace App\Http\Controllers\Site;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class HomeController extends Controller
+class SeminarController extends Controller
 {
     public function index()
     {
-        $a =1;
-        return view('home');
+        return view('seminar');
+    }
+
+    public function show($id)
+    {
+        # code...
     }
 }

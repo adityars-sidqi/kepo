@@ -62,4 +62,46 @@ $(document).ready(function() {
     "iDisplayLength": 5,
     "bLengthChange": false
   });
+
+  $('#password').keyup(function(event) {
+    var panjang = $(this).val().length;
+
+    if (panjang < 6) {
+      $('#helpBlockPassword').html('The password must be at least 6 characters.');
+    } else {
+      $('#helpBlockPassword').html('');
+    }
+  }).change(function(event) {
+    var panjang = $(this).val().length;
+
+    if (panjang < 6) {
+      $('#helpBlockPassword').html('The password must be at least 6 characters.');
+    } else {
+      $('#helpBlockPassword').html('');
+    }
+  });;
+
+  $('#confirm-password').keyup(function(event) {
+    var panjang = $(this).val().length;
+
+    if (panjang < 6) {
+      $('#helpBlockConfirmPassword').html('The password must be at least 6 characters.');
+    } else {
+      $('#helpBlockConfirmPassword').html('');
+    }
+    cekpasswordmatch();
+  });
+
+  function cekpasswordmatch() {
+    var password = $('#password').val();
+    var confirmPassword = $('#confirm-password').val();
+
+    if (password != confirmPassword) {
+      $('#helpBlockConfirmPassword').text('Passwords do not match!');
+    } else {
+      $('#helpBlockConfirmPassword').text('Passwords match!').css({
+        color: 'rgb(72, 198, 34)'
+      });;
+    }
+  }
 });

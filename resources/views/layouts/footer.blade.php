@@ -11,8 +11,8 @@
       <div class="col-md-3 col-sm-6 pre-footer-col">
         <h2>Support</h2>
         <ul>
-          <li><i class="fa fa-angle-right"></i> <a href="#">Frequently Ask Questions</a></li>
-          <li><i class="fa fa-angle-right"></i> <a href="#">Contact Us</a></li>
+          <li><i class="fa fa-angle-right"></i> <a href="/support">Frequently Ask Questions</a></li>
+          <li><i class="fa fa-angle-right"></i> <a href="/support">Contact Us</a></li>
         </ul>
       </div>
     </div>

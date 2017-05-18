@@ -53,7 +53,7 @@
     @include('layouts/footer')
     <!-- end footer -->
 
-    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="bs-example-modal-sm">
       <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -80,7 +80,7 @@
                     <button type="submit" class="btn btn-primary pull-right btnlogin">Login Organisasi</button>
                   </div>
 
-                  <a href="" id="linkregister">Register</a>
+                  <a href="/register" id="linkregister">Register</a>
                 </div>
               </div>
             </form>

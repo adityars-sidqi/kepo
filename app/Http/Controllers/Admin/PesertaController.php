@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Peserta;
 use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
 
 class PesertaController extends Controller
@@ -15,8 +16,8 @@ class PesertaController extends Controller
      */
     public function index()
     {
-      $pesertas = Peserta::all();
-      return view('admin.peserta.index', ['pesertas' => $pesertas]);
+        $pesertas = Peserta::all();
+        return view('admin.peserta.index', ['pesertas' => $pesertas]);
     }
 
     /**
@@ -42,7 +43,8 @@ class PesertaController extends Controller
           'tgl_lahir' => 'required|date',
           'jenis_kelamin' => 'required',
           'email' => 'required|unique:pesertas',
-          'password' => 'required|min:6'
+          'password' => 'required|min:6',
+
         ]);
 
         $peserta = new Peserta;
@@ -80,13 +82,13 @@ class PesertaController extends Controller
      */
     public function edit($id)
     {
-      $peserta = Peserta::find($id);
+        $peserta = Peserta::find($id);
 
-      if(!$peserta){
-        abort(404);
-      }
+        if (!$peserta) {
+            abort(404);
+        }
 
-      return view('admin.peserta.edit')->with('peserta', $peserta);
+        return view('admin.peserta.edit')->with('peserta', $peserta);
     }
 
     /**
@@ -98,7 +100,7 @@ class PesertaController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $this->validate($request, [
+        $this->validate($request, [
         'nama' => 'required',
         'tgl_lahir' => 'required|date',
         'jenis_kelamin' => 'required',
@@ -106,16 +108,16 @@ class PesertaController extends Controller
         'password' => 'required|min:6'
       ]);
 
-      $peserta = Peserta::find($id);
-      $peserta->nama = $request->nama;
-      $peserta->tgl_lahir = $request->tgl_lahir;
-      $peserta->jenis_kelamin = $request->jenis_kelamin;
-      $peserta->email = $request->email;
-      $peserta->password = encrypt($request->password);
-      $peserta->timestamps = false;
-      $peserta->save();
+        $peserta = Peserta::find($id);
+        $peserta->nama = $request->nama;
+        $peserta->tgl_lahir = $request->tgl_lahir;
+        $peserta->jenis_kelamin = $request->jenis_kelamin;
+        $peserta->email = $request->email;
+        $peserta->password = encrypt($request->password);
+        $peserta->timestamps = false;
+        $peserta->save();
 
-      return redirect(asset('admin/peserta/'))->with('success', 'Peserta edited successfully!');
+        return redirect(asset('admin/peserta/'))->with('success', 'Peserta edited successfully!');
     }
 
     /**
@@ -126,9 +128,9 @@ class PesertaController extends Controller
      */
     public function destroy($id)
     {
-      $peserta = Peserta::find($id);
-      $peserta->delete();
+        $peserta = Peserta::find($id);
+        $peserta->delete();
 
-      return redirect(asset('admin/peserta/'))->with('error','Peserta deleted successfully!');
+        return redirect(asset('admin/peserta/'))->with('error', 'Peserta deleted successfully!');
     }
 }

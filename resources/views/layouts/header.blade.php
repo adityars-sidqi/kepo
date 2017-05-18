@@ -10,8 +10,8 @@
       </div>
       <div class="col-md-6 col-sm-6 additional-nav">
         <ul class="list-unstyled list-inline">
-          <li><a href="#" class="linkHeaderTop">Register</a></li>
-          <li><a  data-toggle="modal" href=".bs-example-modal-sm" class="linkHeaderTop">Login</a></li>
+          <li><a href="/register" class="linkHeaderTop">Register</a></li>
+          <li><a  data-toggle="modal" href="#bs-example-modal-sm" class="linkHeaderTop">Login</a></li>
         </ul>
       </div>
     </div>
@@ -29,7 +29,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="#" class="site-logo">
+      <a href="/" class="site-logo">
         <img src="{{asset('images/logo-kepohub.png')}}" height="41" width="140" alt="KepoHub" class="img-responsive hidden-xs">
         <img src="{{asset('images/logo-kepohub-m.png')}}" height="41" width="140" alt="KepoHub" class="img-responsive visible-xs">
       </a>
@@ -38,8 +38,8 @@
     <div id="navbar" class="navbar-collapse collapse">
 
       <ul class="nav navbar-nav navbar-right" id="menu">
-        <li class="menu-header active"><a href="../navbar/" >Home</a></li>
-        <li class="menu-header"><a href="../navbar-static-top/">Seminar</a></li>
+        <li class="menu-header {{ Request::is('/') ? 'active' : ''}}"><a href="/" >Home</a></li>
+        <li class="menu-header {{ Request::is('seminar') || Request::is('seminar/*') ? 'active' : ''}}"><a href="/seminar">Seminar</a></li>
         <li class="menu-header dropdown" id="ddCat">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Category</a>
           <ul class="dropdown-menu" id="ddMenu">
@@ -48,7 +48,7 @@
             <li ><a href="#">Something else here</a></li>
           </ul>
         </li>
-        <li class="menu-header"><a href="../navbar-static-top/">Support</a></li>
+        <li class="menu-header {{ Request::is('support') || Request::is('support/*') ? 'active' : ''}}"><a href="/support">Support</a></li>
       </ul>
 
     </div><!--/.nav-collapse -->
