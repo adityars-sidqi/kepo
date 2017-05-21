@@ -14,7 +14,6 @@
 //ROUTE UNTUK SITE PUBLIK
 Route::group(['namespace' => 'Site'], function () {
     Route::get('/', 'SiteController@index');
-    Route::post('/login', 'SiteController@auth');
     Route::get('/support', 'SiteController@support');
 
     Route::get('/register', 'RegisterController@index');
@@ -29,6 +28,19 @@ Route::group(['namespace' => 'Site'], function () {
 
     Route::get('/seminar', 'SeminarController@index');
     Route::get('/seminar/{id}', 'SeminarController@show');
+
+    Route::post('/login/{jenis}', 'LoginController@auth');
+});
+
+//Route untuk peserta
+Route::group(['namespace' => 'Site', 'middleware' => 'peserta'], function () {
+    Route::get('/logout/peserta', 'LoginController@logout');
+});
+
+//Route untuk organisasi
+Route::group(['namespace' => 'Site', 'middleware' => 'organisasi'], function () {
+    Route::get('/dashboard', 'DashboardOrganisasiController@index');
+    Route::get('/logout/organisasi', 'LoginController@logout');
 });
 
 //ROUTE UNTUK ADMIN

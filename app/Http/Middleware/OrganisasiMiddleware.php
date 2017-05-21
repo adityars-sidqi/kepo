@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class AdminMiddleware
+class OrganisasiMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,9 +15,9 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (session()->has('admin')) {
+        if (session()->get('jenis') == 'organisasi') {
             return $next($request);
         }
-        return redirect('admin/login');
+        return abort(403);
     }
 }

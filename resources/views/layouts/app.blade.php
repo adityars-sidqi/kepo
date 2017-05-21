@@ -8,6 +8,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="{{ asset('images/icon/ms-icon-144x144.png') }}">
     <meta name="theme-color" content="#ffffff">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Kepo Hub</title>
 
@@ -43,7 +44,21 @@
   <body>
     <!-- header -->
     @include('layouts/header')
-    <!-- end header -->
+    <div class="container margin-bottom-10">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- end header -->
+
+          @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+            @if(Session::has('alert-' . $msg))
+
+            <p class="alert alert-{{ $msg }}">{!! Session::get('alert-' . $msg) !!} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+            @endif
+          @endforeach
+
+        </div>
+      </div>
+    </div>
 
     <!-- content -->
     @yield('content')
@@ -58,34 +73,64 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-            <h4 class="modal-title">Login</h4>
+            <h4 class="modal-title" id="titlelogin">Login</h4>
           </div>
           <div class="modal-body">
-            <form role="form" method="POST" action="#">
-              {{ csrf_field() }}
+            <form class="form" action="{{ asset('login/peserta')}}" method="post" role="form" id="formpeserta" style="display:none">
               <div class="row">
                 <div class="col-md-12">
-                  <div class="form-group">
+                  <div id="emaillogin" class="form-group">
                     <label class="control-label">Email Address <span class="required">*</span></label>
-                    <input type="text" name="email" data-required="1" class="form-control"/>
+                    <input type="text"  name="emaillogin" data-required="1" class="form-control"/>
                   </div>
 
-                  <div class="form-group">
+                  <div id="passwordlogin" class="form-group">
                     <label class="control-label">Password <span class="required">*</span></label>
-                    <input type="password" name="password" data-required="1" class="form-control"/>
+                    <input type="password"  name="passwordlogin" data-required="1" class="form-control"/>
                   </div>
 
                   <div class="form-group">
-                    <button type="submit" class="btn btn-primary btnlogin">Login Peserta</button>
-                    <button type="submit" class="btn btn-primary pull-right btnlogin">Login Organisasi</button>
+                    {{ csrf_field() }}
+                    <input type="submit" id="loginpeserta" name="loginpeserta" class="btn btn-primary btnlogin" value="Login Peserta">
                   </div>
 
-                  <a href="/register" id="linkregister">Register</a>
                 </div>
               </div>
             </form>
+            <form class="form" action="{{ asset('login/organisasi')}}" method="post" role="form" id="formorganisasi" style="display:none">
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="emaillogin" class="form-group">
+                    <label class="control-label">Email Address <span class="required">*</span></label>
+                    <input type="text"  name="emaillogin" data-required="1" class="form-control"/>
+                  </div>
+
+                  <div id="passwordlogin" class="form-group">
+                    <label class="control-label">Password <span class="required">*</span></label>
+                    <input type="password"  name="passwordlogin" data-required="1" class="form-control"/>
+                  </div>
+
+                  <div class="form-group">
+                    {{ csrf_field() }}
+                    <input type="submit" id="loginorganisasi" name="loginorganisasi" class="btn btn-primary btnlogin" value="Login Organisasi">
+                  </div>
+
+                </div>
+              </div>
+            </form>
+            <div class="row" id="tombolpilihlogin">
+              <div class="col-md-5 col-sm-5 col-xs-5">
+                <button type="button" class="btn btn-primary" name="btnpeserta" id="btnpeserta">Login Peserta</button>
+              </div>
+              <div class="col-md-5 col-sm-5 col-xs-5">
+                <button type="button" class="btn btn-primary" name="btnorganisasi" id="btnorganisasi">Login Organisasi</button>
+              </div>
+            </div>
+            <br>
+            <a href="/register" id="linkregister">Register</a>
           </div>
           <div class="modal-footer">
+            <button type="button" class="btn btn-primary pull-left" id="btncancel" style="display:none">Cancel</button>
             <button type="button" data-dismiss="modal" class="btn default">Close</button>
           </div>
         </div>

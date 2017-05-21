@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Mail\PesertaCreated;
 use App\Mail\OrganisasiCreated;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 
 class RegisterController extends Controller
@@ -28,7 +29,7 @@ class RegisterController extends Controller
         'nama' => 'required',
         'tgl_lahir' => 'required',
         'jenis_kelamin' => 'required',
-        'email' => 'required|unique:pesertas',
+        'email' => 'required|unique:pesertas|unique:organisasis',
         'password' => 'required|min:6',
         'password_confirmation' => 'required|min:6|same:password'
       ]);
@@ -38,7 +39,7 @@ class RegisterController extends Controller
         $peserta->tgl_lahir = $request->tgl_lahir;
         $peserta->jenis_kelamin = $request->jenis_kelamin;
         $peserta->email = $request->email;
-        $peserta->password = encrypt($request->password);
+        $peserta->password = Hash::make($request->password);
         $kode_aktivasi = time() . "-" . $request->email;
         $peserta->kode_aktivasi = encrypt($kode_aktivasi);
         $peserta->status = "Nonaktif";
@@ -63,7 +64,7 @@ class RegisterController extends Controller
         'nama' => 'required',
         'telp' => 'required|numeric|min:11',
         'alamat' => 'required',
-        'email' => 'required|unique:organisasis',
+        'email' => 'required|unique:organisasis|unique:pesertas',
         'password' => 'required|min:6',
         'password_confirmation' => 'required|min:6|same:password'
       ]);
@@ -73,7 +74,7 @@ class RegisterController extends Controller
         $organisasi->telp = $request->telp;
         $organisasi->alamat = $request->alamat;
         $organisasi->email = $request->email;
-        $organisasi->password = encrypt($request->password);
+        $organisasi->password = Hash::make($request->password);
         $kode_aktivasi = time() . "-" . $request->email;
         $organisasi->kode_aktivasi = encrypt($kode_aktivasi);
         $organisasi->status = "Nonaktif";

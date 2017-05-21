@@ -104,4 +104,31 @@ $(document).ready(function() {
       });;
     }
   }
+
+  $('#btncancel').click(function(event) {
+    $('#formpeserta').hide('400');
+    $('#formorganisasi').hide('400');
+    $('#btncancel').hide('400');
+    $('#titlelogin').html('Login');
+    $('#tombolpilihlogin').show('400');
+  });
+
+  $('#btnpeserta').click(function(event) {
+    $('#titlelogin').html('Login As Peserta');
+    $('#formpeserta').show('400');
+    $('#tombolpilihlogin').hide('400');
+    $('#btncancel').show('400');
+  });
+
+  $('#btnorganisasi').click(function(event) {
+    $('#titlelogin').html('Login As Organisasi');
+    $('#formorganisasi').show('400');
+    $('#tombolpilihlogin').hide('400');
+    $('#btncancel').show('400');
+  });
+
+
+
+
+
 });
