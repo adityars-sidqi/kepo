@@ -22,6 +22,7 @@ class CreateSeminarsTable extends Migration
             $table->integer('tiket_tersedia');
             $table->integer('harga');
             $table->string('gambar');
+            $table->string('slug', 150);
             $table->integer('id_kategori')->unsigned();
             $table->integer('id_organisasi')->unsigned();
             $table->foreign('id_kategori')->references('id_kategori')->on('kategoris')->onDelete('cascade');

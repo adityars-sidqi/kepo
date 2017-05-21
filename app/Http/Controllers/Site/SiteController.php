@@ -17,4 +17,9 @@ class SiteController extends Controller
     {
         return view('support');
     }
+
+    public function coba()
+    {
+        return view('coba');
+    }
 }

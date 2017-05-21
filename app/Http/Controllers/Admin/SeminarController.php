@@ -44,7 +44,7 @@ class SeminarController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-        'judul' => 'required',
+        'judul' => 'required|unique:seminars',
         'tgl_seminar' => 'required|date',
         'tempat' => 'required',
         'deskripsi' => 'required',
@@ -55,7 +55,8 @@ class SeminarController extends Controller
         'id_organisasi' => 'required'
       ]);
         //upload file
-        $filename = str_slug($request->judul, '-') . '-' . time() .  '.png';
+        $judul = strtolower(str_slug($request->judul, '-'));
+        $filename = $judul . '-' . time() .  '.png';
         $request->file('gambar')->storeAs('public/seminar', $filename);
 
         $seminar = new Seminar;
@@ -66,6 +67,7 @@ class SeminarController extends Controller
         $seminar->tiket_tersedia = $request->tiket_tersedia;
         $seminar->harga = $request->harga;
         $seminar->gambar = $filename;
+        $seminar->slug = $judul;
         $seminar->id_kategori = $request->id_kategori;
         $seminar->id_organisasi = $request->id_organisasi;
         $seminar->timestamps = false;

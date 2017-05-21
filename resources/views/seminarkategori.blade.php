@@ -6,8 +6,8 @@
         <div class="container">
 
           <div class="row">
-            <div class="col-md-4">
-              <h1>Seminar</h1>
+            <div class="col-md-6">
+              <h1>Seminar - {{ $kategori }}</h1>
             </div>
           </div>
 
@@ -16,7 +16,9 @@
             $jumlahData = 4;
           @endphp
           @if ($seminars->count() == 0)
-            <div class="row margin-bottom-20" style="margin-bottom: 70px"></div>
+            <div class="row margin-bottom-20" style="margin-bottom: 70px">
+
+            </div>
             <div class="row margin-bottom-10" style="margin-bottom:83px">
               <div class="col-md-12">
                 <h2 class="text-center text-danger">There is no data seminar</h2>

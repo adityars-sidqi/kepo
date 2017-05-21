@@ -18,6 +18,6 @@ class PesertaMiddleware
         if (session()->get('jenis') == 'peserta') {
             return $next($request);
         }
-        return abort(404);
+        return abort(403);
     }
 }

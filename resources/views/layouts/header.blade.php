@@ -52,14 +52,25 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Category</a>
           <ul class="dropdown-menu" id="ddMenu">
             @foreach ($kategoris as $kategori)
-              <li><a href="{{ asset('seminar/'.$kategori->nama_kategori)}}">{{$kategori->nama_kategori}}</a></li>
+              <li><a href="{{ asset('seminar/category/'.$kategori->nama_kategori)}}">{{$kategori->nama_kategori}}</a></li>
             @endforeach
           </ul>
         </li>
-        @if (session()->get('jenis') == 'organisasi')
+        <li class="menu-header {{ Request::is('support') || Request::is('support/*') ? 'active' : ''}}"><a href="{{asset('support')}}">Support</a></li>
+
+        @if (session()->get('jenis') == 'peserta')
+          <li class="menu-header">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Dashboard</a>
+            <ul class="dropdown-menu" id="ddMenu">
+              <li>
+                <a href="{{ asset('transaction/history')}}">
+                  Transaction History
+                </a>
+              </li>
+            </ul>
+          </li>
+        @elseif (session()->get('jenis') == 'organisasi')
           <li class="menu-header {{ Request::is('dashboard') || Request::is('dashboard/*') ? 'active' : ''}}"><a href="{{asset('dashboard')}}">Dashboard</a></li>
-        @else
-          <li class="menu-header {{ Request::is('support') || Request::is('support/*') ? 'active' : ''}}"><a href="{{asset('support')}}">Support</a></li>
         @endif
 
       </ul>

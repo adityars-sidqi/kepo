@@ -8,6 +8,11 @@ class Seminar extends Model
 {
     protected $primaryKey = 'id_seminar';
     public $timestamps = false;
+
+    protected $dates = [
+        'tgl_seminar'
+    ];
+
     public function kategori()
     {
         return $this->belongsTo('App\Models\Kategori', 'id_kategori');

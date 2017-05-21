@@ -14,6 +14,7 @@
 //ROUTE UNTUK SITE PUBLIK
 Route::group(['namespace' => 'Site'], function () {
     Route::get('/', 'SiteController@index');
+    Route::get('/coba', 'SiteController@coba');
     Route::get('/support', 'SiteController@support');
 
     Route::get('/register', 'RegisterController@index');
@@ -27,14 +28,15 @@ Route::group(['namespace' => 'Site'], function () {
     Route::get('/verification/{jenis}/{id}/{key}', 'RegisterController@verification');
 
     Route::get('/seminar', 'SeminarController@index');
-    Route::get('/seminar/{id}', 'SeminarController@show');
-
+    Route::get('/seminar/{slug}', 'SeminarController@show');
+    Route::get('/seminar/category/{cat}', 'SeminarController@perkategori');
     Route::post('/login/{jenis}', 'LoginController@auth');
 });
 
 //Route untuk peserta
 Route::group(['namespace' => 'Site', 'middleware' => 'peserta'], function () {
     Route::get('/logout/peserta', 'LoginController@logout');
+    Route::get('/transaction/history', 'TransaksiController@history');
 });
 
 //Route untuk organisasi
