@@ -36,12 +36,13 @@ Route::group(['namespace' => 'Site'], function () {
 //Route untuk peserta
 Route::group(['namespace' => 'Site', 'middleware' => 'peserta'], function () {
     Route::get('/logout/peserta', 'LoginController@logout');
-    Route::get('/transaction/history', 'TransaksiController@history');
+    Route::get('/transaction/history', 'Peserta\TransaksiController@history');
 });
 
 //Route untuk organisasi
 Route::group(['namespace' => 'Site', 'middleware' => 'organisasi'], function () {
-    Route::get('/dashboard', 'DashboardOrganisasiController@index');
+    Route::resource('dashboard/seminar', 'Organisasi\SeminarController');
+    Route::get('dashboard/laporan', 'Organisasi\LaporanPesertaController@index');
     Route::get('/logout/organisasi', 'LoginController@logout');
 });
 

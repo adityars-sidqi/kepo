@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-namespace App\Http\Controllers\Site;
+namespace App\Http\Controllers\Site\Peserta;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

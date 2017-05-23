@@ -63,6 +63,11 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Dashboard</a>
             <ul class="dropdown-menu" id="ddMenu">
               <li>
+                <a href="{{ asset('transaction/cart')}}">
+                  <span class="glyphicon glyphicon-shopping-cart"></span> Cart
+                </a>
+              </li>
+              <li>
                 <a href="{{ asset('transaction/history')}}">
                   Transaction History
                 </a>
@@ -70,7 +75,21 @@
             </ul>
           </li>
         @elseif (session()->get('jenis') == 'organisasi')
-          <li class="menu-header {{ Request::is('dashboard') || Request::is('dashboard/*') ? 'active' : ''}}"><a href="{{asset('dashboard')}}">Dashboard</a></li>
+          <li class="menu-header {{ Request::is('dashboard') || Request::is('dashboard/*') ? 'active' : ''}}">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Dashboard</a>
+            <ul class="dropdown-menu" id="ddMenu">
+              <li>
+                <a href="{{ asset('dashboard/seminar/')}}">
+                  Seminar
+                </a>
+              </li>
+              <li>
+                <a href="{{ asset('dashboard/laporan/')}}">
+                  Laporan Peserta
+                </a>
+              </li>
+            </ul>
+          </li>
         @endif
 
       </ul>

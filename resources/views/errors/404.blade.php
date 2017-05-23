@@ -5,7 +5,10 @@
   	<div class="container">
       <div class="row" style="margin-bottom: 94px"></div>
       <div class="row margin-bottom-20">
-        <div class="col-md-6" id="number">
+        <div class="col-md-6 hidden-xs" id="number">
+          Not Found
+        </div>
+        <div class="col-xs-12 visible-xs" id="number" style="font-size:50px">
           Not Found
         </div>
         <div class="col-md-6" id="details">

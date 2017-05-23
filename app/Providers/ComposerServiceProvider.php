@@ -15,6 +15,8 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('layouts.app', 'App\Http\Composers\HeaderComposer');
+        view()->composer('home', 'App\Http\Composers\HomeComposer');
+        view()->composer('dashboardorganisasi.seminar.*', 'App\Http\Composers\DashboardOrganisasiComposer');
     }
 
     /**

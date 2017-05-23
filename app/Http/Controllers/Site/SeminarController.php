@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Models\Seminar;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 use App\Http\Controllers\Controller;
 
 class SeminarController extends Controller
@@ -12,6 +13,7 @@ class SeminarController extends Controller
     public function index()
     {
         $seminars = Seminar::orderBy('id_seminar', 'desc')->paginate(12);
+
         return view('seminar', ['seminars' => $seminars]);
     }
 

@@ -6,7 +6,10 @@
       <div class="row" style="margin-bottom: 94px"></div>
       <div class="row margin-bottom-20">
         <div class="row margin-bottom-20"></div>
-        <div class="col-md-6" id="number" style="font-size:80px">
+        <div class="col-md-6 hidden-xs" id="number" style="font-size:80px">
+          Restricted Area
+        </div>
+        <div class="col-xs-12 visible-xs" id="number" style="font-size:50px">
           Restricted Area
         </div>
         <div class="col-md-6" id="details">

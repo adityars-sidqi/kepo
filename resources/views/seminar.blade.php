@@ -27,11 +27,11 @@
           @foreach ($seminars as $seminar)
             @php
               if ($i++ % $jumlahData == 0) {
-                echo "<div class='row margin-bottom-10'>";
+                echo "<div class='row margin-bottom-10' >";
               }
             @endphp
 
-            <div class="col-md-3 col-sm-6 col-xs-12 margin-bottom-5">
+            <div class="col-md-3 col-sm-6 col-xs-12 margin-bottom-5" >
               <a href="#" class="gambarseminar">
                   <img class="img-responsive img-thumbnail" src="{{asset('storage/seminar/'.$seminar->gambar)}}" alt="Generic placeholder image">
               </a>
