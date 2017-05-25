@@ -89,7 +89,7 @@ $(document).ready(function() {
     } else {
       $('#helpBlockConfirmPassword').text('Passwords match!').css({
         color: 'rgb(72, 198, 34)'
-      });;
+      });
     }
   }
 
@@ -139,6 +139,7 @@ $(document).ready(function() {
         })
     });
   });
+
   // var token = $('#_token').val();
   // //tampilin form untuk insert data baru
   // $('#tambah-tab').click(function(event) {
