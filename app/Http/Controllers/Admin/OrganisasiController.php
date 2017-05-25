@@ -6,7 +6,6 @@ use App\Models\Organisasi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-
 class OrganisasiController extends Controller
 {
     /**
@@ -16,8 +15,8 @@ class OrganisasiController extends Controller
      */
     public function index()
     {
-      $organisasis = Organisasi::all();
-      return view('admin.organisasi.index', ['organisasis' => $organisasis]);
+        $organisasis = Organisasi::all();
+        return view('admin.organisasi.index', ['organisasis' => $organisasis]);
     }
 
     /**
@@ -38,7 +37,7 @@ class OrganisasiController extends Controller
      */
     public function store(Request $request)
     {
-      $this->validate($request, [
+        $this->validate($request, [
         'nama' => 'required',
         'telp' => 'required|numeric',
         'alamat' => 'required',
@@ -46,20 +45,20 @@ class OrganisasiController extends Controller
         'password' => 'required|min:6'
       ]);
 
-      $organisasi = new Organisasi;
-      $organisasi->nama = $request->nama;
-      $organisasi->telp = $request->telp;
-      $organisasi->alamat = $request->alamat;
-      $organisasi->email = $request->email;
-      $organisasi->password = encrypt($request->password);
-      $kode_aktivasi = time() . "-" . $request->email;
-      $organisasi->kode_aktivasi = encrypt($kode_aktivasi);
-      $organisasi->status = "Nonaktif";
-      $organisasi->timestamps = false;
+        $organisasi = new Organisasi;
+        $organisasi->nama = $request->nama;
+        $organisasi->telp = $request->telp;
+        $organisasi->alamat = $request->alamat;
+        $organisasi->email = $request->email;
+        $organisasi->password = encrypt($request->password);
+        $kode_aktivasi = time() . "-" . $request->email;
+        $organisasi->kode_aktivasi = encrypt($kode_aktivasi);
+        $organisasi->status = "Nonaktif";
+        $organisasi->timestamps = false;
 
-      $organisasi->save();
+        $organisasi->save();
 
-      return redirect(asset('admin/organisasi/'))->with('success', 'Organisasi created successfully!');
+        return redirect()->back()->with('success', 'Organisasi created successfully!');
     }
 
     /**
@@ -81,13 +80,13 @@ class OrganisasiController extends Controller
      */
     public function edit($id)
     {
-      $organisasi = Organisasi::find($id);
+        $organisasi = Organisasi::find($id);
 
-      if(!$organisasi){
-        abort(404);
-      }
+        if (!$organisasi) {
+            abort(404);
+        }
 
-      return view('admin.organisasi.edit')->with('organisasi', $organisasi);
+        return view('admin.organisasi.edit')->with('organisasi', $organisasi);
     }
 
     /**
@@ -99,7 +98,7 @@ class OrganisasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $this->validate($request, [
+        $this->validate($request, [
         'nama' => 'required',
         'telp' => 'required|numeric',
         'alamat' => 'required',
@@ -108,17 +107,17 @@ class OrganisasiController extends Controller
       ]);
 
 
-      $organisasi = Organisasi::find($id);
-      $organisasi->nama = $request->nama;
-      $organisasi->telp = $request->telp;
-      $organisasi->alamat = $request->alamat;
-      $organisasi->email = $request->email;
-      $organisasi->password = encrypt($request->password);
-      $organisasi->timestamps = false;
+        $organisasi = Organisasi::find($id);
+        $organisasi->nama = $request->nama;
+        $organisasi->telp = $request->telp;
+        $organisasi->alamat = $request->alamat;
+        $organisasi->email = $request->email;
+        $organisasi->password = encrypt($request->password);
+        $organisasi->timestamps = false;
 
-      $organisasi->save();
+        $organisasi->save();
 
-      return redirect(asset('admin/organisasi/'))->with('success', 'Organisasi edited successfully!');
+        return redirect()->back()->with('success', 'Organisasi edited successfully!');
     }
 
     /**
@@ -129,9 +128,9 @@ class OrganisasiController extends Controller
      */
     public function destroy($id)
     {
-      $organisasi = Organisasi::find($id);
-      $organisasi->delete();
+        $organisasi = Organisasi::find($id);
+        $organisasi->delete();
 
-      return redirect(asset('admin/organisasi/'))->with('error','Organisasi deleted successfully!');
+        return redirect()->back()->with('error', 'Organisasi deleted successfully!');
     }
 }

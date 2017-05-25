@@ -46,7 +46,7 @@ class KategoriController extends Controller
         $kategori->timestamps = false;
         $kategori->save();
 
-        return redirect(asset('admin/kategori/'))->with('success', 'Kategori created successfully!');
+        return redirect()->back()->with('success', 'Kategori created successfully!');
     }
 
     /**
@@ -70,8 +70,8 @@ class KategoriController extends Controller
     {
         $kategori = Kategori::find($id);
 
-        if(!$kategori){
-          abort(404);
+        if (!$kategori) {
+            abort(404);
         }
 
         return view('admin.kategori.edit')->with('kategori', $kategori);
@@ -86,16 +86,16 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $this->validate($request, [
+        $this->validate($request, [
         'nama_kategori' => 'required'
       ]);
 
-      $kategori = Kategori::find($id);
-      $kategori->nama_kategori = $request->nama_kategori;
-      $kategori->timestamps = false;
-      $kategori->save();
+        $kategori = Kategori::find($id);
+        $kategori->nama_kategori = $request->nama_kategori;
+        $kategori->timestamps = false;
+        $kategori->save();
 
-      return redirect(asset('admin/kategori/'))->with('success', 'Kategori edited successfully!');
+        return redirect()->back()->with('success', 'Kategori edited successfully!');
     }
 
     /**
@@ -109,6 +109,6 @@ class KategoriController extends Controller
         $kategori = Kategori::find($id);
         $kategori->delete();
 
-        return redirect(asset('admin/kategori/'))->with('error','Kategori deleted successfully!');
+        return redirect()->back()->with('error', 'Kategori deleted successfully!');
     }
 }
