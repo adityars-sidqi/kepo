@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Site;
 
 use App\Models\Peserta;
 use App\Models\Organisasi;
-use Illuminate\Http\Request;
 use App\Mail\PesertaCreated;
 use App\Mail\OrganisasiCreated;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;

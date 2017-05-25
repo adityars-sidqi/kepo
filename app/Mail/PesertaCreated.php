@@ -29,6 +29,6 @@ class PesertaCreated extends Mailable
      */
     public function build()
     {
-        return $this->subject('Verify your email address')->view('email.pesertacreated');
+        return $this->view('email.pesertacreated')->subject('Verify your email address');
     }
 }
