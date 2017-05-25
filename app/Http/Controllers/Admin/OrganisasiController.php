@@ -58,7 +58,7 @@ class OrganisasiController extends Controller
 
         $organisasi->save();
 
-        return redirect()->back()->with('success', 'Organisasi created successfully!');
+        return redirect('admin/organisasi')->with('success', 'Organisasi created successfully!');
     }
 
     /**
@@ -117,7 +117,7 @@ class OrganisasiController extends Controller
 
         $organisasi->save();
 
-        return redirect()->back()->with('success', 'Organisasi edited successfully!');
+        return redirect('admin/organisasi')->with('success', 'Organisasi edited successfully!');
     }
 
     /**
@@ -131,6 +131,6 @@ class OrganisasiController extends Controller
         $organisasi = Organisasi::find($id);
         $organisasi->delete();
 
-        return redirect()->back()->with('error', 'Organisasi deleted successfully!');
+        return redirect('admin/organisasi')->with('error', 'Organisasi deleted successfully!');
     }
 }

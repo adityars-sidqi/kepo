@@ -60,7 +60,7 @@ class PesertaController extends Controller
 
         $peserta->save();
 
-        return redirect()->back()->with('success', 'Peserta created successfully!');
+        return redirect('admin/peserta')->with('success', 'Peserta created successfully!');
     }
 
     /**
@@ -117,7 +117,7 @@ class PesertaController extends Controller
         $peserta->timestamps = false;
         $peserta->save();
 
-        return redirect()->back()->with('success', 'Peserta edited successfully!');
+        return redirect('admin/peserta')->with('success', 'Peserta edited successfully!');
     }
 
     /**
@@ -131,6 +131,6 @@ class PesertaController extends Controller
         $peserta = Peserta::find($id);
         $peserta->delete();
 
-        return redirect()->back()->with('error', 'Peserta deleted successfully!');
+        return redirect('admin/peserta')->with('error', 'Peserta deleted successfully!');
     }
 }

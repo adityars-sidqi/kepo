@@ -74,7 +74,7 @@ class SeminarController extends Controller
 
         $seminar->save();
 
-        return redirect()->back()->with('success', 'Seminar created successfully!');
+        return redirect('admin/seminar')->with('success', 'Seminar created successfully!');
     }
 
     /**
@@ -147,7 +147,7 @@ class SeminarController extends Controller
         $seminar->timestamps = false;
         $seminar->save();
 
-        return redirect()->back()->with('success', 'Seminar edited successfully!');
+        return redirect('admin/seminar')->with('success', 'Seminar edited successfully!');
     }
 
     /**
@@ -162,6 +162,6 @@ class SeminarController extends Controller
         File::delete('storage/seminar/'. $seminar->gambar);
         $seminar->delete();
 
-        return redirect()->back()->with('error', 'Seminar deleted successfully!');
+        return redirect('admin/seminar')->with('error', 'Seminar deleted successfully!');
     }
 }

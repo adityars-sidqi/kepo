@@ -46,7 +46,7 @@ class KategoriController extends Controller
         $kategori->timestamps = false;
         $kategori->save();
 
-        return redirect()->back()->with('success', 'Kategori created successfully!');
+        return redirect('admin/kategori')->with('success', 'Kategori created successfully!');
     }
 
     /**
@@ -95,7 +95,7 @@ class KategoriController extends Controller
         $kategori->timestamps = false;
         $kategori->save();
 
-        return redirect()->back()->with('success', 'Kategori edited successfully!');
+        return redirect('admin/kategori')->with('success', 'Kategori edited successfully!');
     }
 
     /**
@@ -109,6 +109,6 @@ class KategoriController extends Controller
         $kategori = Kategori::find($id);
         $kategori->delete();
 
-        return redirect()->back()->with('error', 'Kategori deleted successfully!');
+        return redirect('admin/kategori')->with('error', 'Kategori deleted successfully!');
     }
 }
