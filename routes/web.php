@@ -36,7 +36,10 @@ Route::group(['namespace' => 'Site'], function () {
 //Route untuk peserta
 Route::group(['namespace' => 'Site', 'middleware' => 'peserta'], function () {
     Route::get('/logout/peserta', 'LoginController@logout');
+    Route::get('/transaction/cart', 'Peserta\TransaksiController@cart');
     Route::get('/transaction/history', 'Peserta\TransaksiController@history');
+    Route::post('/seminar/{slug}/buy', 'Peserta\TransaksiController@buy');
+    Route::get('/seminar/{slug}/delete', 'Peserta\TransaksiController@delete');
 });
 
 //Route untuk organisasi

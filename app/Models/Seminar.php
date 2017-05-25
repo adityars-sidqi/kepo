@@ -22,4 +22,9 @@ class Seminar extends Model
     {
         return $this->belongsTo('App\Models\Organisasi', 'id_organisasi');
     }
+
+    public function transaksis()
+    {
+        return $this->belongsToMany('App\Models\Transaksi', 'detail_transaksis', 'id_seminar', 'id_transaksi')->withPivot('jumlah_tiket', 'total');
+    }
 }

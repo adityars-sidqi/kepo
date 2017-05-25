@@ -80,7 +80,13 @@
                     <div class="form-group">
                       <label for="inputJumlahTiket" class="col-sm-2 control-label">Amount Ticket</label>
                         <div class="col-sm-10">
-                          <input type="number" class="form-control" id="inputJumlahTiket" min="1">
+                          @if (session()->get('jenis') == 'peserta')
+                            <form action="{{ asset('seminar/'.$seminar->slug.'/buy') }}" method="post">
+                          @endif
+                          <input type="number" class="form-control" name="jumlah_tiket" id="jumlah_tiket" min="1" aria-describedby="helpBlocJumlahTiket" >
+                          <span id="helpBlocJumlahTiket" class="help-block">
+                            {{ $errors->has('jumlah_tiket') ? $errors->first('jumlah_tiket') : ''}}
+                          </span>
                         </div>
                     </div>
                   </div>
@@ -108,7 +114,9 @@
         <div class="row" id="id-b-ticket-btn-pane">
           <div class="col-md-3 text-right pull-right padding-top-15">
             @if (session()->get('jenis') == 'peserta')
-              <button type="button" data-loading-text="Loading..." class="demo-loading-btn btn-lg btn btn-block btn-success add-to-cart"><span id="id-tkt-buy-btn-lbl">Buy Ticket</span></button>
+              {{ csrf_field() }}
+              <button type="submit" class="demo-loading-btn btn-lg btn btn-block btn-success add-to-cart"><span id="id-tkt-buy-btn-lbl">Buy Ticket</span></button>
+            </form>
             @elseif (session()->get('jenis') == 'organisasi')
               <button type="button" data-loading-text="Loading..." class="demo-loading-btn btn-lg btn btn-block btn-success add-to-cart"><span id="id-tkt-buy-btn-lbl">Login As Peserta To Buy</span></button>
             @else
