@@ -1,12 +1,13 @@
 @extends('admin.layouts.master')
 
-@section('title','Konfirmasi | Administrator KEPO.ID')
+@section('title','Konfirmasi | Administrator KepoHub.com')
 @section('title_page', 'Konfirmasi')
 @section('script_page')
     $('#konfirmasi').dataTable( {
       "iDisplayLength": 5,
       "bLengthChange": false,
       "columns": [
+          null,
           null,
           null,
           null,
@@ -23,6 +24,7 @@
 @endsection
 @section('content')
   @include('admin/layouts/flash_message')
+
   <table id="konfirmasi" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
@@ -36,6 +38,7 @@
                 <th>ID Admin</th>
                 <th>Nama Admin</th>
                 <th>Status</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -48,17 +51,19 @@
               <td>{{ $konfirmasi->atas_nama }}</td>
               <td>{{ $konfirmasi->jumlah_transfer }}</td>
               <td>{{ $konfirmasi->id_transaksi }}</td>
-              <td>{{ $konfirmasi->id_admin }}</td>
-              <td>{{ $konfirmasi->admin->nama }}</td>
-              <td>{{ $konfirmasi->status == 1 ? 'Sudah Dikonfirmasi' : 'Belum Dikonfirmasi' }}</td>
+              <td>{{ $konfirmasi->status == 1 ? $konfirmasi->id_admin : '-'  }}</td>
+              <td>{{ $konfirmasi->status == 1 ? $konfirmasi->admin->nama : '-'    }}</td>
               <td>
                 <center>
-                  @if ($konfirmasi->status)
-                    <a href="{{ url('admin/konfirmasi/' . $konfirmasi->id_konfirmasi .'/edit') }}" class="btn btn-primary">Konfirmasi</a>
+                  @if ($konfirmasi->status == 0)
+                    -
                   @else
-                    <a class="btn btn-success">Sudah Konfirmasi</a>
+                    <a class="btn btn-success btn-xs">Sudah dikonfirmasi</a>
                   @endif
                 </center>
+              </td>
+              <td>
+                <a href="{{ url('admin/konfirmasi/' . $konfirmasi->id_konfirmasi ) }}" class="btn btn-info">Lihat</a>
               </td>
             </tr>
           @endforeach

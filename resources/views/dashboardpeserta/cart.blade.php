@@ -47,7 +47,8 @@
                     foreach (session()->get('seminar') as $seminar_session) {
                       $grand_total += $seminar_session['sub_total'];
                     }
-                    echo $grand_total;
+                    session(['grand_total' => $grand_total]);
+                    echo session()->get('grand_total');
                   @endphp
                 </strong>
               </td>
@@ -60,7 +61,7 @@
     @if (session()->get('seminar') != null)
       <div class="row margin-bottom-20">
         <div class="col-md-12 col-sm-12">
-          <input type="button" class="btn btn-lg btn-success pull-right" value="Checkout">
+          <a href="{{ asset('/transaction/checkout') }}" class="btn btn-lg btn-success pull-right" >Checkout</a>
         </div>
       </div>
     @endif

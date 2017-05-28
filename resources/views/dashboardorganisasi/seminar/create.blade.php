@@ -12,43 +12,64 @@
             <div class="form-group">
               <label for="judul" class="col-lg-2 control-label">Judul <span class="require">*</span></label>
               <div class="col-lg-8">
-                <input type="text" name="judul" class="form-control" id="judul" value="">
+                <input type="text" name="judul" class="form-control" id="judul" aria-describedby="helpBlockJudul" value="{{ old('judul') }}">
+                <span id="helpBlockJudul" class="help-block">
+                  {{ $errors->has('judul') ? $errors->first('judul') : ''}}
+                </span>
               </div>
             </div>
             <div class="form-group">
               <label for="tgl_seminar" class="col-lg-2 control-label">Tanggal <span class="require">*</span></label>
               <div class="col-lg-8">
-                <input type="date" name="tgl_seminar" class="form-control" id="tgl_seminar" value="">
+                <input type="date" name="tgl_seminar" class="form-control" id="tgl_seminar" aria-describedby="helpBlocktgl_seminar" value="{{ old('tgl_seminar') }}">
+                <span id="helpBlocktgl_seminar" class="help-block">
+                  {{ $errors->has('tgl_seminar') ? $errors->first('tgl_seminar') : ''}}
+                </span>
               </div>
             </div>
             <div class="form-group">
               <label for="tempat" class="col-lg-2 control-label">Tempat <span class="require">*</span></label>
               <div class="col-lg-8">
-                <input type="text" name="tempat" class="form-control" id="tempat" value="">
+                <input type="text" name="tempat" class="form-control" id="tempat" aria-describedby="helpBlocktempat" value="{{ old('tempat') }}">
+                <span id="helpBlocktempat" class="help-block">
+                  {{ $errors->has('tempat') ? $errors->first('tempat') : ''}}
+                </span>
               </div>
             </div>
             <div class="form-group">
               <label for="deskripsi" class="col-lg-2 control-label">Deskripsi <span class="require">*</span></label>
               <div class="col-lg-8">
-                <textarea class="form-control" name="deskripsi" id="deskripsi" rows="3"></textarea>
+                <textarea class="form-control" name="deskripsi" id="deskripsi" aria-describedby="helpBlockdeskripsi" rows="3">{{ old('deskripsi') }}</textarea>
+                <span id="helpBlockdeskripsi" class="help-block">
+                  {{ $errors->has('deskripsi') ? $errors->first('deskripsi') : ''}}
+                </span>
               </div>
             </div>
             <div class="form-group">
               <label for="harga" class="col-lg-2 control-label">Harga <span class="require">*</span></label>
               <div class="col-lg-8">
-                <input type="number" min="1" name="harga" class="form-control" id="harga" value="">
+                <input type="number" min="1" name="harga" class="form-control" id="harga" aria-describedby="helpBlockharga" value="{{ old('harga') }}">
+                <span id="helpBlockharga" class="help-block">
+                  {{ $errors->has('harga') ? $errors->first('harga') : ''}}
+                </span>
               </div>
             </div>
             <div class="form-group">
               <label for="tiket-tiket_tersedia" class="col-lg-2 control-label">Tiket Tersedia <span class="require">*</span></label>
               <div class="col-lg-8">
-                <input type="number" min="1" name="tiket_tersedia" class="form-control" id="tiket_tersedia" value="">
+                <input type="number" min="1" name="tiket_tersedia" class="form-control" id="tiket_tersedia" aria-describedby="helpBlocktiket_tersedia" value="{{ old('tiket_tersedia') }}">
+                <span id="helpBlocktiket_tersedia" class="help-block">
+                  {{ $errors->has('tiket_tersedia') ? $errors->first('tiket_tersedia') : ''}}
+                </span>
               </div>
             </div>
             <div class="form-group">
               <label for="gambar" class="col-lg-2 control-label">Gambar <span class="require">*</span></label>
               <div class="col-lg-8">
-                <input type="file" name="gambar" class="form-control" id="gambar">
+                <input type="file" name="gambar" class="form-control" id="gambar" aria-describedby="helpBlockgambar">
+                <span id="helpBlockgambar" class="help-block">
+                  {{ $errors->has('gambar') ? $errors->first('gambar') : ''}}
+                </span>
               </div>
             </div>
             <div class="form-group">
@@ -56,7 +77,7 @@
               <div class="col-lg-8">
                 <select name="id_kategori" class="form-control" id="id_kategori">
                   @foreach ($kategoris as $kategori)
-                    <option value="{{$kategori->id_kategori}}">{{$kategori->nama_kategori}}</option>
+                    <option value="{{$kategori->id_kategori}}" {{ old('id_kategori') == $kategori->id_kategori ? "selected":""}}>{{$kategori->nama_kategori}}</option>
                   @endforeach
                 </select>
               </div>

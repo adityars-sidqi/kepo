@@ -15,38 +15,24 @@
             </tr>
           </thead>
           <tbody>
+            @foreach ($transaksis as $transaksi)
             <tr>
-              <td>10114320</td>
-              <td>15-08-2017</td>
-              <td>Rp. 150000</td>
+              <td>{{ $transaksi->id_transaksi }}</td>
+              <td>{{ $transaksi->tgl_transaksi->toDateString() }}</td>
+              <td>Rp. {{ $transaksi->grand_total }}</td>
               <td>
-                <button type="button" class="btn btn-success">Confirmation Payment</button>
+                @if ($transaksi->konfirmasi == null)
+                  <a href="{{ asset('transaction/'.$transaksi->id_transaksi)}}" class="btn btn-info">Confirmation Payment</a>
+                @else
+                  @if ($transaksi->konfirmasi->status == 1)
+                    <a href="{{ asset('transaction/'.$transaksi->id_transaksi)}}" class="btn btn-success">Print Your Tickets</a>
+                  @else
+                    <a href="{{ asset('transaction/'.$transaksi->id_transaksi)}}" class="btn btn-warning">On Process</a>
+                  @endif
+                @endif
               </td>
             </tr>
-            <tr>
-              <td>10114320</td>
-              <td>15-08-2017</td>
-              <td>Rp. 150000</td>
-              <td>
-                <button type="button" class="btn btn-success">Confirmation Payment</button>
-              </td>
-            </tr>
-            <tr>
-              <td>10114320</td>
-              <td>15-08-2017</td>
-              <td>Rp. 150000</td>
-              <td>
-                <button type="button" class="btn btn-success">Confirmation Payment</button>
-              </td>
-            </tr>
-            <tr>
-              <td>10114320</td>
-              <td>15-08-2017</td>
-              <td>Rp. 150000</td>
-              <td>
-                <button type="button" class="btn btn-success">Confirmation Payment</button>
-              </td>
-            </tr>
+            @endforeach
           </tbody>
         </table>
       </div>

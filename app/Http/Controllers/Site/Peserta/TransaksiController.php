@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Site\Peserta;
 
+use Carbon\Carbon;
 use App\Models\Seminar;
 use App\Models\Transaksi;
 use App\Models\Konfirmasi;
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -13,7 +13,8 @@ class TransaksiController extends Controller
 {
     public function history()
     {
-        return view('dashboardpeserta.histori');
+        $transaksis = Transaksi::where('id_peserta', session()->get('id_peserta'))->orderBy('tgl_transaksi', 'desc')->get();
+        return view('dashboardpeserta.histori', ['transaksis' => $transaksis]);
     }
 
     public function cart()
@@ -62,5 +63,64 @@ class TransaksiController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function checkout(Request $request)
+    {
+        $transaksi = new Transaksi;
+        $transaksi->tgl_transaksi = Carbon::now()->toDateString();
+        $transaksi->id_peserta = $request->session()->get('id_peserta');
+        $transaksi->grand_total = $request->session()->get('grand_total');
+        $transaksi->timestamps = false;
+
+        $transaksi->save();
+
+        $id_transaksi = Transaksi::where('id_peserta', $request->session()->get('id_peserta'))->orderBy('id_transaksi', 'desc')->first();
+        foreach ($request->session()->get('seminar') as $session_seminar) {
+            $transaksi = Transaksi::find($id_transaksi);
+            $transaksi->seminars()->attach($session_seminar['id_seminar'], ['jumlah_tiket' => $session_seminar['jumlah_tiket'], 'total' => $session_seminar['sub_total']]);
+        }
+        session()->forget('seminar');
+        request()->session()->flash('alert-success', 'Successfully purchased! Please confirm payment, if you already transfer');
+        return redirect('transaction/history');
+    }
+
+    public function single($id)
+    {
+        $transaksi = Transaksi::findOrFail($id);
+
+        if (!$transaksi) {
+            abort(404);
+        }
+
+        return view('dashboardpeserta.transaksisingle', ['transaksi' => $transaksi]);
+    }
+
+    public function confirmation($id_transaksi, Request $request)
+    {
+        $this->validate($request, [
+          'bank_pengirim' => 'required',
+          'atas_nama' => 'required',
+          'jumlah_transfer' => 'required|numeric|min:1'
+        ]);
+
+        $transaksi = Transaksi::findOrFail($id_transaksi);
+
+        if (!$transaksi) {
+            abort(404);
+        }
+
+        $konfirmasi = new Konfirmasi;
+        $konfirmasi->id_peserta = $request->session()->get('id_peserta');
+        $konfirmasi->bank_pengirim = $request->bank_pengirim;
+        $konfirmasi->atas_nama = $request->atas_nama;
+        $konfirmasi->jumlah_transfer = $request->jumlah_transfer;
+        $konfirmasi->id_transaksi = $id_transaksi;
+        $konfirmasi->status = 0;
+
+        $konfirmasi->save();
+
+        $request->session()->flash('alert-success', 'Success Confirmation! Please wait (2 x 24hrs) , our admin will process your payment');
+        return redirect('transaction/history');
     }
 }

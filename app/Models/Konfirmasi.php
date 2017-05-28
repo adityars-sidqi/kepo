@@ -20,6 +20,6 @@ class Konfirmasi extends Model
 
     public function transaksi()
     {
-        return $this->hasOne('App\Models\Transaksi', 'id_transaksi');
+        return $this->belongsTo('App\Models\Transaksi', 'id_transaksi');
     }
 }

@@ -38,8 +38,12 @@ Route::group(['namespace' => 'Site', 'middleware' => 'peserta'], function () {
     Route::get('/logout/peserta', 'LoginController@logout');
     Route::get('/transaction/cart', 'Peserta\TransaksiController@cart');
     Route::get('/transaction/history', 'Peserta\TransaksiController@history');
+    Route::get('/transaction/{id}', 'Peserta\TransaksiController@single');
+    Route::post('/transaction/{id_transaksi}/confirmation', 'Peserta\TransaksiController@confirmation');
+
     Route::post('/seminar/{slug}/buy', 'Peserta\TransaksiController@buy');
     Route::get('/seminar/{slug}/delete', 'Peserta\TransaksiController@delete');
+    Route::get('/transaction/checkout', 'Peserta\TransaksiController@checkout');
 });
 
 //Route untuk organisasi
@@ -65,4 +69,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'admin', 'prefix' => 'admi
     Route::resource('organisasi', 'OrganisasiController');
 
     Route::get('/konfirmasi', 'KonfirmasiController@index');
+    Route::get('/konfirmasi/{id}', 'KonfirmasiController@show');
+    Route::get('/konfirmasi/{id}/confirm', 'KonfirmasiController@confirm');
+    Route::delete('/konfirmasi/{id}', 'KonfirmasiController@destroy');
 });
