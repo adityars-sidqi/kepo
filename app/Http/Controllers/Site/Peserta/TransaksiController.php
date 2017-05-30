@@ -110,6 +110,20 @@ class TransaksiController extends Controller
             abort(404);
         }
 
+        foreach ($transaksi->seminars as $seminar) {
+            if ($transaksi->grand_total != $request->jumlah_transfer) {
+                $request->session()->flash('alert-danger', 'Sorry, total transfer does not match with your order grand total! Please check again!');
+                return redirect()->back();
+            } elseif ($seminar->tiket_tersedia < $seminar->pivot->jumlah_tiket) {
+                $request->session()->flash('alert-danger', 'Sorry your confirmation could not be processed! Because, amount tickets unavailable!');
+                return redirect()->back();
+            } else {
+                $tiket_tersedia = $seminar->tiket_tersedia;
+                $seminar->tiket_tersedia -= $seminar->pivot->jumlah_tiket;
+                $seminar->save();
+            }
+        }
+
         $konfirmasi = new Konfirmasi;
         $konfirmasi->id_peserta = $request->session()->get('id_peserta');
         $konfirmasi->bank_pengirim = $request->bank_pengirim;

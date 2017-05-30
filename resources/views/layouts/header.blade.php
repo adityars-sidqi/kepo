@@ -85,7 +85,7 @@
               </li>
               <li>
                 <a href="{{ asset('dashboard/laporan/')}}">
-                  Laporan Peserta
+                  Laporan Penjualan Tiket
                 </a>
               </li>
             </ul>

@@ -49,7 +49,7 @@
                     <div class="form-group">
                       <label for="bank_pengirim" class="col-lg-3 control-label">Bank <span class="require">*</span></label>
                       <div class="col-lg-8">
-                        <input type="text" name="bank_pengirim" class="form-control" id="bank_pengirim" aria-describedby="helpBlockbank_pengirim">
+                        <input type="text" name="bank_pengirim" class="form-control" id="bank_pengirim" aria-describedby="helpBlockbank_pengirim" >
                         <span id="helpBlockbank_pengirim" class="help-block">
                           {{ $errors->has('bank_pengirim') ? $errors->first('bank_pengirim') : ''}}
                         </span>
@@ -58,7 +58,7 @@
                     <div class="form-group">
                       <label for="atas_nama" class="col-lg-3 control-label">Sender Name <span class="require">*</span></label>
                       <div class="col-lg-8">
-                        <input type="text" name="atas_nama" class="form-control" id="atas_nama" aria-describedby="helpBlockatas_nama">
+                        <input type="text" name="atas_nama" class="form-control" id="atas_nama" aria-describedby="helpBlockatas_nama" >
                         <span id="helpBlockatas_nama" class="help-block">
                           {{ $errors->has('atas_nama') ? $errors->first('atas_nama') : ''}}
                         </span>
@@ -67,7 +67,7 @@
                     <div class="form-group">
                       <label for="jumlah_transfer" class="col-lg-3 control-label">Total Transfer (Rp) <span class="require">*</span></label>
                       <div class="col-lg-8">
-                        <input type="number" min="1" name="jumlah_transfer" class="form-control" id="jumlah_transfer" aria-describedby="helpBlockjumlah_transfer">
+                        <input type="number" min="1" name="jumlah_transfer" class="form-control" id="jumlah_transfer" aria-describedby="helpBlockjumlah_transfer" >
                         <span id="helpBlockjumlah_transfer" class="help-block">
                           {{ $errors->has('jumlah_transfer') ? $errors->first('jumlah_transfer') : ''}}
                         </span>

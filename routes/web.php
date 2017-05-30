@@ -38,12 +38,12 @@ Route::group(['namespace' => 'Site', 'middleware' => 'peserta'], function () {
     Route::get('/logout/peserta', 'LoginController@logout');
     Route::get('/transaction/cart', 'Peserta\TransaksiController@cart');
     Route::get('/transaction/history', 'Peserta\TransaksiController@history');
+    Route::get('/transaction/checkout', 'Peserta\TransaksiController@checkout');
     Route::get('/transaction/{id}', 'Peserta\TransaksiController@single');
     Route::post('/transaction/{id_transaksi}/confirmation', 'Peserta\TransaksiController@confirmation');
 
     Route::post('/seminar/{slug}/buy', 'Peserta\TransaksiController@buy');
     Route::get('/seminar/{slug}/delete', 'Peserta\TransaksiController@delete');
-    Route::get('/transaction/checkout', 'Peserta\TransaksiController@checkout');
 });
 
 //Route untuk organisasi
