@@ -15,11 +15,17 @@ class RegisterController extends Controller
 {
     public function index()
     {
+        if (request()->session()->has('jenis')) {
+            return redirect()->back();
+        }
         return view('register');
     }
 
     public function peserta()
     {
+        if (request()->session()->has('jenis')) {
+            return redirect()->back();
+        }
         return view('regpeserta');
     }
 
@@ -55,6 +61,9 @@ class RegisterController extends Controller
 
     public function organisasi()
     {
+        if (request()->session()->has('jenis')) {
+            return redirect()->back();
+        }
         return view('regorganisasi');
     }
 
