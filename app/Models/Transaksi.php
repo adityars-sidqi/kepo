@@ -11,7 +11,11 @@ class Transaksi extends Model
     protected $dates = [
       'tgl_transaksi'
   ];
-
+    public function peserta()
+    {
+        return $this->belongsTo('App\Models\Peserta', 'id_peserta');
+    }
+    
     public function seminars()
     {
         return $this->belongsToMany('App\Models\Seminar', 'detail_transaksis', 'id_transaksi', 'id_seminar')->withPivot('jumlah_tiket', 'total');

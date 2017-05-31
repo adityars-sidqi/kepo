@@ -12,4 +12,8 @@ class Peserta extends Model
     {
         return $this->hasOne('App\Models\Konfirmasi', 'id_peserta');
     }
+    public function transaksi()
+    {
+        return $this->hasMany('App\Models\Transaksi', 'id_peserta');
+    }
 }

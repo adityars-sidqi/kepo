@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site\Peserta;
 
+use PDF;
 use Carbon\Carbon;
 use App\Models\Seminar;
 use App\Models\Transaksi;
@@ -75,10 +76,10 @@ class TransaksiController extends Controller
 
         $transaksi->save();
 
-        $id_transaksi = Transaksi::where('id_peserta', $request->session()->get('id_peserta'))->orderBy('id_transaksi', 'desc')->first();
-        foreach ($request->session()->get('seminar') as $session_seminar) {
-            $transaksi = Transaksi::find($id_transaksi);
-            $transaksi->seminars()->attach($session_seminar['id_seminar'], ['jumlah_tiket' => $session_seminar['jumlah_tiket'], 'total' => $session_seminar['sub_total']]);
+        $id_transaksi = Transaksi::where('id_peserta', request()->session()->get('id_peserta'))->orderBy('id_transaksi', 'desc')->first();
+
+        foreach (request()->session()->get('seminar') as $session_seminar) {
+            $id_transaksi->seminars()->attach($session_seminar['id_seminar'], ['jumlah_tiket' => $session_seminar['jumlah_tiket'], 'total' => $session_seminar['sub_total']]);
         }
         session()->forget('seminar');
         request()->session()->flash('alert-success', 'Successfully purchased! Please confirm payment, if you already transfer');
@@ -136,5 +137,23 @@ class TransaksiController extends Controller
 
         $request->session()->flash('alert-success', 'Success Confirmation! Please wait (2 x 24hrs) , our admin will process your payment');
         return redirect('transaction/history');
+    }
+
+    public function print($id)
+    {
+        $transaksi = Transaksi::findOrFail($id);
+
+        if (!$transaksi) {
+            abort(404);
+        }
+
+        if ($transaksi->konfirmasi->status != 1) {
+            request()->sesssion()->flash('alert-danger', 'Please, finish your payment first');
+            return redirec()->back();
+        }
+
+        $pdf = PDF::loadView('pdf.ticket', ['transaksi' => $transaksi]);
+        $namafile = $transaksi->peserta->nama . '-' . $transaksi->id_transaksi;
+        return $pdf->download($namafile.'.pdf');
     }
 }

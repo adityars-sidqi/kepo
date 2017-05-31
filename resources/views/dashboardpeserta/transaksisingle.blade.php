@@ -120,12 +120,14 @@
                         @endif
                       </div>
                     </div>
-                    <div class="form-group">
-                      <div class="col-md-3"></div>
-                      <div class="col-md-8">
-                        <a href="#" class="btn btn-info">Print Your Tickets</a>
+                    @if ($transaksi->konfirmasi->status == 1)
+                      <div class="form-group">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-8">
+                          <a href="{{ asset('transaction/'. $transaksi->id_transaksi .'/print') }}" class="btn btn-info">Print Your Tickets</a>
+                        </div>
                       </div>
-                    </div>
+                    @endif
                   </fieldset>
                 </form>
               @endif

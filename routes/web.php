@@ -39,6 +39,7 @@ Route::group(['namespace' => 'Site', 'middleware' => 'peserta'], function () {
     Route::get('/transaction/cart', 'Peserta\TransaksiController@cart');
     Route::get('/transaction/history', 'Peserta\TransaksiController@history');
     Route::get('/transaction/checkout', 'Peserta\TransaksiController@checkout');
+    Route::get('/transaction/{id}/print', 'Peserta\TransaksiController@print');
     Route::get('/transaction/{id}', 'Peserta\TransaksiController@single');
     Route::post('/transaction/{id_transaksi}/confirmation', 'Peserta\TransaksiController@confirmation');
 
