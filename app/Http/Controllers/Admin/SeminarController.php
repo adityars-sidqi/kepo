@@ -6,8 +6,6 @@ use App\Models\Seminar;
 use App\Models\Kategori;
 use App\Models\Organisasi;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 
 class SeminarController extends Controller

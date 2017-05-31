@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Site\Organisasi;
 
 use App\Models\Seminar;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 
 class SeminarController extends Controller
