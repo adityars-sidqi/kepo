@@ -152,7 +152,7 @@ class TransaksiController extends Controller
             request()->sesssion()->flash('alert-danger', 'Please, finish your payment first');
             return redirec()->back();
         }
-
+        // return view('pdf.ticket', ['transaksi'=>$transaksi]);
         $pdf = PDF::loadView('pdf.ticket', ['transaksi' => $transaksi]);
         $namafile = $transaksi->peserta->nama . '-' . $transaksi->id_transaksi;
         return $pdf->download($namafile.'.pdf');

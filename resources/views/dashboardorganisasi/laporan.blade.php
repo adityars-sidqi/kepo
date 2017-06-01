@@ -21,7 +21,7 @@
               <td>{{ $seminar->id_seminar }}</td>
               <td>{{ $seminar->judul }}</td>
               <td>{{ $seminar->jumlah_tiket }}</td>
-              <td><a href="#" class="btn btn-success"><span class="glyphicon glyphicon-download"></span> Download Laporan</a></td>
+              <td><a href="{{ asset('dashboard/laporan/'. $seminar->id_seminar .'/print') }}" class="btn btn-success"><span class="glyphicon glyphicon-download"></span> Download Laporan</a></td>
             </tr>
           @endforeach
         </tbody>

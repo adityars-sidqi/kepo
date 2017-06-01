@@ -51,6 +51,7 @@ Route::group(['namespace' => 'Site', 'middleware' => 'peserta'], function () {
 Route::group(['namespace' => 'Site', 'middleware' => 'organisasi'], function () {
     Route::resource('dashboard/seminar', 'Organisasi\SeminarController');
     Route::get('dashboard/laporan', 'Organisasi\LaporanPesertaController@index');
+    Route::get('dashboard/laporan/{id}/print', 'Organisasi\LaporanPesertaController@printLaporan');
     Route::get('/logout/organisasi', 'LoginController@logout');
 });
 

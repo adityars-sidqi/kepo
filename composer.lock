@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d1858a055cc962de80763f157c799bbe",
+    "content-hash": "699d86a4c0b88bc372b0e10695ee1141",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -654,16 +654,16 @@
         },
         {
             "name": "laravel/tinker",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/tinker.git",
-                "reference": "3d5b675b55b24ccbf86395964042dbe061d5a965"
+                "reference": "7eb2e281395131897407285672ef5532e87e17f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/tinker/zipball/3d5b675b55b24ccbf86395964042dbe061d5a965",
-                "reference": "3d5b675b55b24ccbf86395964042dbe061d5a965",
+                "url": "https://api.github.com/repos/laravel/tinker/zipball/7eb2e281395131897407285672ef5532e87e17f9",
+                "reference": "7eb2e281395131897407285672ef5532e87e17f9",
                 "shasum": ""
             },
             "require": {
@@ -684,6 +684,11 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Tinker\\TinkerServiceProvider"
+                    ]
                 }
             },
             "autoload": {
@@ -708,7 +713,7 @@
                 "laravel",
                 "psysh"
             ],
-            "time": "2016-12-30T18:13:17+00:00"
+            "time": "2017-06-01T16:31:26+00:00"
         },
         {
             "name": "league/flysystem",
@@ -897,6 +902,55 @@
                 "storage"
             ],
             "time": "2016-08-19T08:32:57+00:00"
+        },
+        {
+            "name": "milon/barcode",
+            "version": "5.3.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/milon/barcode.git",
+                "reference": "0f211bf93ee1783f1b6e2a1081b45b55af3e7df3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/milon/barcode/zipball/0f211bf93ee1783f1b6e2a1081b45b55af3e7df3",
+                "reference": "0f211bf93ee1783f1b6e2a1081b45b55af3e7df3",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Milon\\Barcode": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Nuruzzaman Milon",
+                    "email": "contact@milon.im"
+                }
+            ],
+            "description": "Barcode generator like Qr Code , PDF417,C39, C39+,C39E,C39E+,C93,S25,S25+,I25,I25+,C128,C128A,C128B,C128C,2-Digits UPC-Based Extention,5-Digits UPC-Based Extention,EAN 8,EAN 13,UPC-A,UPC-E,MSI (Variation of Plessey code) ",
+            "keywords": [
+                "CODABAR",
+                "CODE 128",
+                "CODE 39",
+                "barcode",
+                "datamatrix",
+                "ean",
+                "laravel",
+                "pdf417",
+                "qr code",
+                "qrcode"
+            ],
+            "time": "2017-04-21T01:08:30+00:00"
         },
         {
             "name": "monolog/monolog",

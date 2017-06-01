@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site\Organisasi;
 
+use PDF;
 use App\Models\Transaksi;
 use App\Models\Konfirmasi;
 use App\Models\Seminar;
@@ -22,5 +23,18 @@ class LaporanPesertaController extends Controller
 
 
         return view('dashboardorganisasi.laporan', ['seminars' => $seminars]);
+    }
+
+    public function printLaporan($id)
+    {
+        $seminar = Seminar::findOrFail($id);
+
+        if (!$seminar) {
+            abort(404);
+        }
+        
+        $pdf = PDF::loadView('pdf.laporanpeserta', ['seminar' => $seminar]);
+        $namafile = 'Laporan-Penjualan-Tiket-'. $seminar->organisasi->nama . '-' . $seminar->judul;
+        return $pdf->download($namafile.'.pdf');
     }
 }
