@@ -9,7 +9,7 @@
           </div>
           <div class="col-md-3 col-sm-4 margin-bottom-20 hidden-xs">
             <a data-rel="fancybox-button" title="" href="{{ asset('storage/seminar/'.$seminar->gambar) }}" class="fancybox-button">
-              <img src="{{ asset('storage/seminar/'.$seminar->gambar) }}" class="img-responsive" data-bigimgsrc="{{ asset('storage/seminar/'.$seminar->gambar) }}" alt="">
+              <img src="{{ asset(Storage::url('seminar/'.$seminar->gambar)) }}" class="img-responsive" data-bigimgsrc="{{ asset('storage/seminar/'.$seminar->gambar) }}" alt="">
             </a> <!-- img poster -->
   			  </div>
           <div class="col-md-9 detailEvent">

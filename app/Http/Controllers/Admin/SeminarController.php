@@ -55,7 +55,7 @@ class SeminarController extends Controller
         //upload file
         $judul = strtolower(str_slug($request->judul, '-'));
         $filename = $judul . '-' . time() .  '.png';
-        $request->file('gambar')->storeAs('public/seminar', $filename);
+        $request->file('gambar')->storeAs('seminar', $filename);
 
         $seminar = new Seminar;
         $seminar->judul = $request->judul;

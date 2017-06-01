@@ -9,7 +9,7 @@
           <div class="carousel-inner" role="listbox">
             @foreach ($seminarfeaturedpertamas as $seminarfeaturedpertama)
               <div class="item active">
-                <img src="{{asset('storage/seminar/'.$seminarfeaturedpertama->gambar)}}" class="img-responsive" alt="...">
+                <img src="{{asset(Storage::url('seminar/'.$seminarfeaturedpertama->gambar))}}" class="img-responsive" alt="...">
                 <div class="carousel-caption">
                   <a href="{{ asset('seminar/'.$seminarfeaturedpertama->slug)}}"
                     style="color:rgb(255, 255, 255); font-size: 24px">
@@ -20,7 +20,7 @@
             @endforeach
             @foreach ($seminarfeatureds as $seminarfeatured)
               <div class="item">
-                <img src="{{asset('storage/seminar/'.$seminarfeatured->gambar)}}" class="img-responsive" alt="...">
+                <img src="{{asset(Storage::url('seminar/'.$seminarfeatured->gambar))}}" class="img-responsive" alt="...">
                 <div class="carousel-caption">
                   <a href="{{ asset('seminar/'.$seminarfeatured->slug) }}"
                     style="color:rgb(255, 255, 255); font-size: 24px">

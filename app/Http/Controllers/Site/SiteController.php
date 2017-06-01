@@ -6,6 +6,7 @@ use App\Models\Kategori;
 use App\Models\Seminar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 
 class SiteController extends Controller
