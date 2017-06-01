@@ -18,7 +18,7 @@ class LaporanPesertaController extends Controller
         FROM konfirmasis JOIN transaksis ON konfirmasis.id_transaksi = transaksis.id_transaksi
         JOIN detail_transaksis ON transaksis.id_transaksi = detail_transaksis.id_transaksi
         JOIN seminars ON seminars.id_seminar = detail_transaksis.id_seminar
-        WHERE seminars.id_organisasi = 1 AND konfirmasis.status = 1
+        WHERE seminars.id_organisasi = '. request()->session()->get('id_organisasi') .' AND konfirmasis.status = 1
         GROUP BY seminars.judul, seminars.id_seminar');
 
 
@@ -32,7 +32,7 @@ class LaporanPesertaController extends Controller
         if (!$seminar) {
             abort(404);
         }
-        
+
         $pdf = PDF::loadView('pdf.laporanpeserta', ['seminar' => $seminar]);
         $namafile = 'Laporan-Penjualan-Tiket-'. $seminar->organisasi->nama . '-' . $seminar->judul;
         return $pdf->download($namafile.'.pdf');
