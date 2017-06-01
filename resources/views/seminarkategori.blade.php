@@ -35,7 +35,7 @@
 
             <div class="col-md-3 col-sm-6 col-xs-12 margin-bottom-5">
               <a href="#" class="gambarseminar">
-                  <img class="img-responsive img-thumbnail" src="{{asset(Storage::url('seminar/'.$seminar->gambar))}}" alt="Generic placeholder image">
+                  <img class="img-responsive img-thumbnail" src="https://kepohub.blob.core.windows.net/image/seminar/{{$seminar->gambar}}" alt="Generic placeholder image">
               </a>
               <h4>
                 <a href="{{ asset('seminar/'.$seminar->slug) }}" class="judul">{{ $seminar->judul }}</a>

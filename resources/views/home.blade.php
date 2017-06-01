@@ -9,9 +9,9 @@
           <div class="carousel-inner" role="listbox">
             @foreach ($seminarfeaturedpertamas as $seminarfeaturedpertama)
               <div class="item active">
-                <img src="{{asset(Storage::url('seminar/'.$seminarfeaturedpertama->gambar))}}" class="img-responsive" alt="...">
+                <img src="https://kepohub.blob.core.windows.net/image/seminar/{{$seminarfeaturedpertama->gambar}}" class="img-responsive" alt="...">
                 <div class="carousel-caption">
-                  <a href="{{ asset('seminar/'.$seminarfeaturedpertama->slug)}}"
+                  <a href="{{ asset('seminar/'.$seminarfeaturedpertama->slug) }}"
                     style="color:rgb(255, 255, 255); font-size: 24px">
                     {{ $seminarfeaturedpertama->judul }}
                   </a>
@@ -20,7 +20,7 @@
             @endforeach
             @foreach ($seminarfeatureds as $seminarfeatured)
               <div class="item">
-                <img src="{{asset(Storage::url('seminar/'.$seminarfeatured->gambar))}}" class="img-responsive" alt="...">
+                <img src="https://kepohub.blob.core.windows.net/image/seminar/{{$seminarfeatured->gambar}}" class="img-responsive" alt="...">
                 <div class="carousel-caption">
                   <a href="{{ asset('seminar/'.$seminarfeatured->slug) }}"
                     style="color:rgb(255, 255, 255); font-size: 24px">

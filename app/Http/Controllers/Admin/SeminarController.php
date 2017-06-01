@@ -6,6 +6,8 @@ use App\Models\Seminar;
 use App\Models\Kategori;
 use App\Models\Organisasi;
 use Illuminate\Http\Request;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 
 class SeminarController extends Controller
@@ -55,7 +57,11 @@ class SeminarController extends Controller
         //upload file
         $judul = strtolower(str_slug($request->judul, '-'));
         $filename = $judul . '-' . time() .  '.png';
-        $request->file('gambar')->storeAs('seminar', $filename);
+
+        //$request->file('gambar')->storeAs('seminar', $filename);
+
+        Storage::putFileAs('seminar', new File($request->file('gambar')), $filename);
+
 
         $seminar = new Seminar;
         $seminar->judul = $request->judul;
