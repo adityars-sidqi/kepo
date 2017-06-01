@@ -28,6 +28,7 @@ class TransaksiController extends Controller
         $this->validate($request, [
           'jumlah_tiket' => 'required|numeric|min:1'
         ]);
+
         $seminar = Seminar::where('slug', $slug)->first();
         $sub_total = $request->jumlah_tiket * $seminar->harga;
 
@@ -139,7 +140,7 @@ class TransaksiController extends Controller
         return redirect('transaction/history');
     }
 
-    public function print($id)
+    public function printTicket($id)
     {
         $transaksi = Transaksi::findOrFail($id);
 
