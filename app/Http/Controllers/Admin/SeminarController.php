@@ -141,9 +141,10 @@ class SeminarController extends Controller
         $seminar->harga = $request->harga;
         if (!is_null($request->gambar)) {
             //upload file
-      File::delete('storage/seminar/'. $seminar->gambar);
-            $filename = str_slug($request->judul, '-') . time() .  '.png';
-            $request->file('gambar')->storeAs('public/seminar', $filename);
+            Storage::delete('seminar/'. $seminar->gambar);
+            $judul = strtolower(str_slug($request->judul, '-'));
+            $filename = $judul . '-' . time() .  '.png';
+            Storage::putFileAs('seminar', new File($request->file('gambar')), $filename);
             $seminar->gambar = $filename;
         }
         $seminar->id_kategori = $request->id_kategori;
@@ -163,7 +164,7 @@ class SeminarController extends Controller
     public function destroy($id)
     {
         $seminar = Seminar::find($id);
-        File::delete('storage/seminar/'. $seminar->gambar);
+        Storage::delete('seminar/'. $seminar->gambar);
         $seminar->delete();
 
         return redirect('admin/seminar')->with('error', 'Seminar deleted successfully!');
