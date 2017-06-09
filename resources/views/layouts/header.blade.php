@@ -2,13 +2,13 @@
 <div class="pre-header">
   <div class="container">
     <div class="row">
-      <div class="col-md-6 col-sm-6 additional-shop-info">
+      <div class="col-md-4 col-sm-4 additional-shop-info">
         <ul class="list-unstyled list-inline">
           <li><a href="#" class="linkHeaderTop">Sell Your Events with us!</a></li>
           <li><a href="#" class="linkHeaderTop">Our Services</a></li>
         </ul>
       </div>
-      <div class="col-md-6 col-sm-6 additional-nav">
+      <div class="col-md-8 col-sm-8 additional-nav">
         <ul class="list-unstyled list-inline">
           @if (session()->get('jenis') == 'peserta')
             <li><a href="#" class="linkHeaderTop">{{ $namapeserta->nama }}</a></li>

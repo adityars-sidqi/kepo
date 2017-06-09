@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
   <div class="container">
     <div class="row">
@@ -9,7 +8,8 @@
           <div class="carousel-inner" role="listbox">
             @foreach ($seminarfeaturedpertamas as $seminarfeaturedpertama)
               <div class="item active">
-                <img src="https://kepohub.blob.core.windows.net/image/seminar/{{$seminarfeaturedpertama->gambar}}" class="img-responsive" alt="...">
+                <img src="https://kepohub.blob.core.windows.net/image/seminar/{{$seminarfeaturedpertama->gambar}}"
+                class="img-responsive" alt="{{$seminarfeaturedpertama->slug}}">
                 <div class="carousel-caption">
                   <a href="{{ asset('seminar/'.$seminarfeaturedpertama->slug) }}"
                     style="color:rgb(255, 255, 255); font-size: 24px">
@@ -20,7 +20,8 @@
             @endforeach
             @foreach ($seminarfeatureds as $seminarfeatured)
               <div class="item">
-                <img src="https://kepohub.blob.core.windows.net/image/seminar/{{$seminarfeatured->gambar}}" class="img-responsive" alt="...">
+                <img src="https://kepohub.blob.core.windows.net/image/seminar/{{$seminarfeatured->gambar}}"
+                class="img-responsive" alt="{{$seminarfeatured->slug}}">
                 <div class="carousel-caption">
                   <a href="{{ asset('seminar/'.$seminarfeatured->slug) }}"
                     style="color:rgb(255, 255, 255); font-size: 24px">
@@ -46,7 +47,9 @@
             <div class="col-md-12">
               <ul class="list-unstyled" >
                 @foreach ($seminarterbarus as $seminarterbaru)
-                  <li class="margin-bottom-10" ><a href="{{ asset('seminar/'.$seminarterbaru->slug) }}">{{ $seminarterbaru->judul }}</a></li>
+                  <li class="margin-bottom-10" ><a href="{{ asset('seminar/'.$seminarterbaru->slug) }}">
+                    {{ $seminarterbaru->judul }}</a>
+                  </li>
                 @endforeach
               </ul>
             </div>

@@ -14,7 +14,8 @@ class SiteController extends Controller
     public function index(Request $request)
     {
         if (request()->ajax()) {
-            $seminars = Seminar::whereBetween('tgl_seminar', [$request->input('startp'), $request->input('endp')])->orderBy('id_seminar', 'desc')->paginate(8);
+            $seminars = Seminar::whereBetween('tgl_seminar', [$request->input('startp'), $request->input('endp')])
+                                ->orderBy('id_seminar', 'desc')->paginate(8);
             return response()->json(View::make('seminars', array('seminars' => $seminars))->render());
         }
         return view('home');
@@ -25,8 +26,4 @@ class SiteController extends Controller
         return view('support');
     }
 
-    public function coba()
-    {
-        return view('coba');
-    }
 }

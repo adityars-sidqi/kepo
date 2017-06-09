@@ -1,31 +1,8 @@
 @extends('admin.layouts.master')
 
-@section('title','Dashboard | Administrator KEPO.ID')
-@section('title_page', 'Dashboard')
+@section('title','Dashboard | Administrator Kepo Hub')
+@section('title_page', 'Dashboard Administrator')
 @section('content')
-
-    <div class="row placeholders">
-      <div class="col-xs-6 col-sm-3 placeholder">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-        <h4>Label</h4>
-        <span class="text-muted">Something else</span>
-      </div>
-      <div class="col-xs-6 col-sm-3 placeholder">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-        <h4>Label</h4>
-        <span class="text-muted">Something else</span>
-      </div>
-      <div class="col-xs-6 col-sm-3 placeholder">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-        <h4>Label</h4>
-        <span class="text-muted">Something else</span>
-      </div>
-      <div class="col-xs-6 col-sm-3 placeholder">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-        <h4>Label</h4>
-        <span class="text-muted">Something else</span>
-      </div>
-    </div>
 
 
 @endsection
