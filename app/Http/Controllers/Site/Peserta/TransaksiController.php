@@ -30,25 +30,30 @@ class TransaksiController extends Controller
         ]);
 
         $seminar = Seminar::where('slug', $slug)->first();
-        $sub_total = $request->jumlah_tiket * $seminar->harga;
-
-        $seminar->setAttribute('jumlah_tiket', $request->jumlah_tiket);
-        $seminar->setAttribute('sub_total', $sub_total);
-
-
-        if (session()->get('seminar') == null) {
-            session()->push('seminar', $seminar);
-            request()->session()->flash('alert-success', 'Seminar <strong>' . $seminar->judul . '</strong> successfully purchased!');
+        if ($request->jumlah_tiket > $seminar->tiket_tersedia) {
+            request()->session()->flash('alert-danger', 'The number of tickets seminar <strong>' . $seminar->judul . '</strong> is not available!');
             return redirect()->back();
         } else {
-            foreach (session()->get('seminar') as $session_seminar) {
-                if ($session_seminar['slug'] != $slug) {
-                    session()->push('seminar', $seminar);
-                    request()->session()->flash('alert-success', 'Seminar <strong>' . $seminar->judul . '</strong> successfully purchased!');
-                    return redirect()->back();
-                } else {
-                    request()->session()->flash('alert-danger', 'Seminar <strong>' . $seminar->judul . '</strong> already added to cart!');
-                    return redirect()->back();
+            $sub_total = $request->jumlah_tiket * $seminar->harga;
+
+            $seminar->setAttribute('jumlah_tiket', $request->jumlah_tiket);
+            $seminar->setAttribute('sub_total', $sub_total);
+
+
+            if (session()->get('seminar') == null) {
+                session()->push('seminar', $seminar);
+                request()->session()->flash('alert-success', 'Seminar <strong>' . $seminar->judul . '</strong> successfully purchased!');
+                return redirect()->back();
+            } else {
+                foreach (session()->get('seminar') as $session_seminar) {
+                    if ($session_seminar['slug'] != $slug) {
+                        session()->push('seminar', $seminar);
+                        request()->session()->flash('alert-success', 'Seminar <strong>' . $seminar->judul . '</strong> successfully purchased!');
+                        return redirect()->back();
+                    } else {
+                        request()->session()->flash('alert-danger', 'Seminar <strong>' . $seminar->judul . '</strong> already added to cart!');
+                        return redirect()->back();
+                    }
                 }
             }
         }

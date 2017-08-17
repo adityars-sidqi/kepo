@@ -92,9 +92,6 @@
             <td>:</td>
             <td>{{ $transaksi->id_transaksi . $seminar->id_seminar . $transaksi->peserta->id_peserta . $i }}</td>
           </tr>
-          <tr>
-            <td colspan="3"><img src="data:image/png;base64, {{DNS1D::getBarcodePNG($transaksi->id_transaksi . $seminar->id_seminar . $transaksi->peserta->id_peserta . $i, "C39+") }}" alt="barcode"   /></td>
-          </tr>
         </table>
         <table>
           <tr>
